@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 import { getBookingStore } from "@/lib/booking/store";
 import { computeAmounts } from "@/lib/booking/money";
 import { formatDepartureDate } from "@/lib/booking/format";
+import { rateLimit } from "@/lib/rate-limit";
 import {
   BookingForm,
   type DepartureOption,
@@ -34,6 +36,17 @@ export default async function BookPage({
   const { locale, tourSlug } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
+
+  // Availability is served here (departures + live seat counts) — rate-limit it.
+  const forwarded = (await headers()).get("x-forwarded-for");
+  const ip = forwarded?.split(",")[0]?.trim() || "unknown";
+  if (!rateLimit(`availability:${ip}`, 60, 60_000).ok) {
+    return (
+      <div className="mx-auto max-w-2xl px-5 py-24 text-center">
+        <p className="text-base text-muted">{dict.book.status.rateLimited}</p>
+      </div>
+    );
+  }
 
   const items = dict.tours.items as Record<
     string,
