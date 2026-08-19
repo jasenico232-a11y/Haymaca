@@ -19,6 +19,7 @@
   },
   "nav": {
     "destinations": "Destinations",
+    "tours": "Tours",
     "process": "How it works",
     "contact": "Contact",
     "enquire": "Plan a trip"
@@ -131,6 +132,138 @@
     "email": "hello@haymaca.travel",
     "addressLabel": "Studio",
     "address": "12 Waterloo Road, Kingston 10, Jamaica"
+  },
+  "tours": {
+    "meta": {
+      "title": "Tours and day trips — Haymaca",
+      "description": "Guided day trips and multi-day routes across Jamaica, filterable by category, duration, price and date, on a grid or a map."
+    },
+    "title": "Tours and day trips",
+    "intro": "Guided days out and multi-day routes across the island, run by people from these parishes. Filter by what you want to do, when you can go, and what you want to spend.",
+    "resultOne": "{n} tour",
+    "resultOther": "{n} tours",
+    "filters": {
+      "heading": "Filters",
+      "category": "Category",
+      "duration": "Duration",
+      "price": "Price from (USD)",
+      "date": "Available on or after",
+      "clear": "Clear filters",
+      "sort": "Sort by"
+    },
+    "categories": {
+      "adventure": "Adventure",
+      "water": "Water",
+      "culture": "Culture & heritage",
+      "food": "Food & rum",
+      "wildlife": "Nature & wildlife"
+    },
+    "durationBands": {
+      "half-day": "Half day",
+      "full-day": "Full day",
+      "multi-day": "Multi-day"
+    },
+    "priceBands": {
+      "under-100": "Under $100",
+      "100-250": "$100–250",
+      "250-500": "$250–500",
+      "over-500": "$500 and up"
+    },
+    "sort": {
+      "popularity": "Most booked",
+      "price": "Price: low to high",
+      "duration": "Duration: short to long"
+    },
+    "view": {
+      "label": "View",
+      "grid": "Grid",
+      "map": "Map"
+    },
+    "duration": {
+      "hour": "hour",
+      "hours": "hours",
+      "day": "day",
+      "days": "days"
+    },
+    "card": {
+      "from": "From",
+      "currency": "USD",
+      "departure": "Departs",
+      "nextDate": "Next date",
+      "durationLabel": "Duration"
+    },
+    "empty": {
+      "title": "No tours match those filters",
+      "body": "Widen the dates or drop a filter — the calendar fills months ahead, so there is usually something close.",
+      "action": "Clear filters"
+    },
+    "map": {
+      "loading": "Loading the map",
+      "close": "Close",
+      "clusterTemplate": "{n} tours",
+      "regionsLabel": "Map of tours across Jamaica"
+    },
+    "places": {
+      "kingston": "Kingston",
+      "port-antonio": "Port Antonio",
+      "treasure-beach": "Treasure Beach",
+      "black-river": "Black River",
+      "montego-bay": "Montego Bay"
+    },
+    "items": {
+      "blue-mountain-peak-sunrise": {
+        "title": "Blue Mountain Peak sunrise hike",
+        "summary": "A pre-dawn climb to 2,256 m for sunrise above the clouds."
+      },
+      "rio-grande-rafting": {
+        "title": "Rio Grande bamboo rafting",
+        "summary": "Two hours poled downriver on a bamboo raft, Portland's old banana route."
+      },
+      "pelican-bar-boat": {
+        "title": "Pelican Bar by boat",
+        "summary": "A boat to the stilted sandbar bar a mile off Parottee, with lunch out at sea."
+      },
+      "reach-falls-hike": {
+        "title": "Reach Falls river walk",
+        "summary": "Climb the tiered falls and swim the jade pools in Portland's rainforest."
+      },
+      "kingston-heritage-walk": {
+        "title": "Kingston heritage walk",
+        "summary": "Trench Town, the Marley museum and downtown on foot with a local guide."
+      },
+      "appleton-rum-estate": {
+        "title": "Appleton Estate rum day",
+        "summary": "The Nassau Valley distillery, cane field to cask, with a guided tasting."
+      },
+      "cockpit-birding": {
+        "title": "Cockpit Country birding",
+        "summary": "Dawn among the sinkhole hills for endemic parrots and the swallowtail."
+      },
+      "blue-lagoon-swim": {
+        "title": "Blue Lagoon swim",
+        "summary": "The spring-fed lagoon where cold fresh water meets the warm sea."
+      },
+      "black-river-safari": {
+        "title": "Black River safari",
+        "summary": "A boat up the island's longest river, past crocodiles and mangrove."
+      },
+      "blue-mountain-coffee": {
+        "title": "Blue Mountain coffee farm",
+        "summary": "A working farm at 1,200 m: picking, roasting and a cup at the source."
+      },
+      "island-traverse-7day": {
+        "title": "Seven-day island traverse",
+        "summary": "Coast to mountains to coast: the south shore, the Peak and Portland in a week."
+      },
+      "accompong-maroon": {
+        "title": "Accompong Maroon village",
+        "summary": "The free Maroon town in the Cockpit hills, its history told by its own people."
+      },
+      "south-coast-3day": {
+        "title": "South coast in three days",
+        "summary": "Treasure Beach, Pelican Bar and YS Falls at a slow southern pace."
+      }
+    }
   },
   "footer": {
     "tagline": "A travel studio for Jamaica, on the ground in Kingston.",

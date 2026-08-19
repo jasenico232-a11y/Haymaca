@@ -19,6 +19,7 @@
   },
   "nav": {
     "destinations": "Destinos",
+    "tours": "Tours",
     "process": "Cómo funciona",
     "contact": "Contacto",
     "enquire": "Planear un viaje"
@@ -131,6 +132,138 @@
     "email": "hello@haymaca.travel",
     "addressLabel": "Estudio",
     "address": "12 Waterloo Road, Kingston 10, Jamaica"
+  },
+  "tours": {
+    "meta": {
+      "title": "Tours y excursiones — Haymaca",
+      "description": "Excursiones de un día y rutas de varios días por Jamaica, filtrables por categoría, duración, precio y fecha, en cuadrícula o mapa."
+    },
+    "title": "Tours y excursiones",
+    "intro": "Salidas de un día y rutas de varios días por la isla, guiadas por gente de estas parroquias. Filtra por lo que quieres hacer, cuándo puedes ir y cuánto quieres gastar.",
+    "resultOne": "{n} tour",
+    "resultOther": "{n} tours",
+    "filters": {
+      "heading": "Filtros",
+      "category": "Categoría",
+      "duration": "Duración",
+      "price": "Precio desde (USD)",
+      "date": "Disponible desde",
+      "clear": "Quitar filtros",
+      "sort": "Ordenar por"
+    },
+    "categories": {
+      "adventure": "Aventura",
+      "water": "Agua",
+      "culture": "Cultura y patrimonio",
+      "food": "Comida y ron",
+      "wildlife": "Naturaleza y fauna"
+    },
+    "durationBands": {
+      "half-day": "Medio día",
+      "full-day": "Día completo",
+      "multi-day": "Varios días"
+    },
+    "priceBands": {
+      "under-100": "Menos de $100",
+      "100-250": "$100–250",
+      "250-500": "$250–500",
+      "over-500": "$500 o más"
+    },
+    "sort": {
+      "popularity": "Más reservados",
+      "price": "Precio: de menor a mayor",
+      "duration": "Duración: de menor a mayor"
+    },
+    "view": {
+      "label": "Vista",
+      "grid": "Cuadrícula",
+      "map": "Mapa"
+    },
+    "duration": {
+      "hour": "hora",
+      "hours": "horas",
+      "day": "día",
+      "days": "días"
+    },
+    "card": {
+      "from": "Desde",
+      "currency": "USD",
+      "departure": "Sale de",
+      "nextDate": "Próxima fecha",
+      "durationLabel": "Duración"
+    },
+    "empty": {
+      "title": "Ningún tour coincide con esos filtros",
+      "body": "Amplía las fechas o quita un filtro: el calendario se llena con meses de antelación, así que casi siempre hay algo cercano.",
+      "action": "Quitar filtros"
+    },
+    "map": {
+      "loading": "Cargando el mapa",
+      "close": "Cerrar",
+      "clusterTemplate": "{n} tours",
+      "regionsLabel": "Mapa de tours por Jamaica"
+    },
+    "places": {
+      "kingston": "Kingston",
+      "port-antonio": "Port Antonio",
+      "treasure-beach": "Treasure Beach",
+      "black-river": "Black River",
+      "montego-bay": "Montego Bay"
+    },
+    "items": {
+      "blue-mountain-peak-sunrise": {
+        "title": "Caminata al amanecer al Pico de las Blue Mountains",
+        "summary": "Un ascenso antes del alba a 2.256 m para ver el amanecer sobre las nubes."
+      },
+      "rio-grande-rafting": {
+        "title": "Balsa de bambú por el Rio Grande",
+        "summary": "Dos horas río abajo en balsa de bambú, la vieja ruta bananera de Portland."
+      },
+      "pelican-bar-boat": {
+        "title": "Pelican Bar en bote",
+        "summary": "Un bote hasta el bar sobre pilotes en el banco de arena frente a Parottee, con almuerzo mar adentro."
+      },
+      "reach-falls-hike": {
+        "title": "Sendero de Reach Falls",
+        "summary": "Sube las cascadas escalonadas y nada en las pozas verdes de la selva de Portland."
+      },
+      "kingston-heritage-walk": {
+        "title": "Caminata por el patrimonio de Kingston",
+        "summary": "Trench Town, el museo de Marley y el centro a pie con un guía local."
+      },
+      "appleton-rum-estate": {
+        "title": "Día de ron en Appleton Estate",
+        "summary": "La destilería del valle de Nassau, de la caña al barril, con cata guiada."
+      },
+      "cockpit-birding": {
+        "title": "Aves en Cockpit Country",
+        "summary": "Al amanecer entre las colinas kársticas, tras loros endémicos y la mariposa cola de golondrina."
+      },
+      "blue-lagoon-swim": {
+        "title": "Baño en la Blue Lagoon",
+        "summary": "La laguna alimentada por manantiales donde el agua dulce fría se une al mar tibio."
+      },
+      "black-river-safari": {
+        "title": "Safari por el Black River",
+        "summary": "Un bote por el río más largo de la isla, entre cocodrilos y manglares."
+      },
+      "blue-mountain-coffee": {
+        "title": "Finca de café Blue Mountain",
+        "summary": "Una finca en activo a 1.200 m: recolección, tueste y una taza en el origen."
+      },
+      "island-traverse-7day": {
+        "title": "Travesía de la isla en siete días",
+        "summary": "De costa a montaña a costa: el sur, el Pico y Portland en una semana."
+      },
+      "accompong-maroon": {
+        "title": "Pueblo cimarrón de Accompong",
+        "summary": "El pueblo cimarrón libre en las colinas de Cockpit, su historia contada por su propia gente."
+      },
+      "south-coast-3day": {
+        "title": "Costa sur en tres días",
+        "summary": "Treasure Beach, Pelican Bar y YS Falls al ritmo pausado del sur."
+      }
+    }
   },
   "footer": {
     "tagline": "Un estudio de viajes para Jamaica, sobre el terreno en Kingston.",

@@ -50,6 +50,10 @@ function makeNonce(): string {
   return btoa(binary);
 }
 
+// The tour map (MapLibre GL) pulls open raster tiles from OpenStreetMap and
+// spins up its rendering worker from a blob: URL. Everything else stays 'self'.
+const TILE_HOST = "https://tile.openstreetmap.org https://*.tile.openstreetmap.org";
+
 function contentSecurityPolicy(nonce: string, isDev: boolean): string {
   const scriptSrc = ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'"];
   // Next.js dev server and the error overlay compile with eval.
@@ -62,9 +66,10 @@ function contentSecurityPolicy(nonce: string, isDev: boolean): string {
     // Scripts are nonce-locked; inline styles (React style props, next/font) are
     // allowed. The brief bans unsafe-inline for scripts only.
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob:",
+    `img-src 'self' data: blob: ${TILE_HOST}`,
     "font-src 'self'",
-    "connect-src 'self'",
+    `connect-src 'self' ${TILE_HOST}`,
+    "worker-src 'self' blob:",
     "form-action 'self'",
     "frame-ancestors 'none'",
     "object-src 'none'",

@@ -9,9 +9,10 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "audit:slop": "node tools/antislop/audit.mjs app && node tools/antislop/audit.mjs components"
+    "audit:slop": "node tools/antislop/audit.mjs app && node tools/antislop/audit.mjs components && node tools/antislop/audit.mjs lib"
   },
   "dependencies": {
+    "maplibre-gl": "6.4.1",
     "next": "15.5.23",
     "react": "19.2.8",
     "react-dom": "19.2.8"

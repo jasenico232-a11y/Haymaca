@@ -6,7 +6,11 @@ import type { Config } from "tailwindcss";
  * palette classes (bg-blue-500 and friends are banned by tools/antislop).
  */
 const config: Config = {
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
+  ],
   theme: {
     // borderRadius is replaced, not extended: the brief allows exactly two radii,
     // so the default rounded-md / rounded-full utilities must not exist.
@@ -24,6 +28,8 @@ const config: Config = {
         sun: "#E8A33D", // warm amber, reserved for featured / emphasis markers
         muted: "#67675E", // secondary text
         line: "#E0DDD3", // hairlines and dividers
+        clay: "#B4552E", // category accent — culture & heritage
+        moss: "#6B7B3A", // category accent — nature & wildlife
       },
       fontFamily: {
         // Wired to next/font CSS variables (see lib/fonts). display is the

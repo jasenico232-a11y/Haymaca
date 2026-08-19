@@ -13,6 +13,7 @@ export function SiteHeader({
   const base = `/${locale}`;
   const links = [
     { href: `${base}#destinations`, label: dict.nav.destinations },
+    { href: `${base}/tours`, label: dict.nav.tours },
     { href: `${base}#process`, label: dict.nav.process },
     { href: `${base}#contact`, label: dict.nav.contact },
   ];
