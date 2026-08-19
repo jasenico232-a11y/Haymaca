@@ -1,0 +1,31 @@
+{
+  "name": "haymaca",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Haymaca — enquiry-led travel site for Jamaica. Next.js 15 App Router, en/es, nonce-based CSP.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "audit:slop": "node tools/antislop/audit.mjs app && node tools/antislop/audit.mjs components"
+  },
+  "dependencies": {
+    "next": "15.5.23",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.2.0",
+    "@types/node": "22.10.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.18.0",
+    "eslint-config-next": "15.5.23",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.7.3"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Haymaca — viajes por Jamaica, planeados sobre el terreno",
+    "description": "Un estudio de viajes con base en Kingston que organiza viajes privados y en grupos pequeños por Jamaica: Treasure Beach, Port Antonio, las Blue Mountains, Frenchman's Cove. Respondemos cada consulta en persona en un día laborable."
+  },
+  "html": {
+    "localeName": "Español"
+  },
+  "a11y": {
+    "skipToContent": "Saltar al contenido principal",
+    "primaryNav": "Navegación principal",
+    "footerNav": "Navegación del pie de página",
+    "languageRegion": "Idioma",
+    "decorativeRidge": "Silueta de la cordillera de las Blue Mountains"
+  },
+  "brand": {
+    "name": "Haymaca",
+    "meaning": "Taíno para \"tierra de madera y agua\": el nombre más antiguo de la isla."
+  },
+  "nav": {
+    "destinations": "Destinos",
+    "process": "Cómo funciona",
+    "contact": "Contacto",
+    "enquire": "Planear un viaje"
+  },
+  "localeSwitcher": {
+    "label": "Idioma",
+    "options": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "hero": {
+    "eyebrow": "Estudio de viajes con base en Kingston · desde 2016",
+    "headlineLead": "Jamaica, organizada por gente que",
+    "headlineEmphasis": "vive aquí",
+    "headlineTrail": ".",
+    "body": "Reservamos el bote de pesca, no el catamarán. Viajes privados y en grupos pequeños por toda la isla, planeados según lo que de verdad quieres hacer, y respondidos por una persona, no por un formulario.",
+    "priceNote": "Viajes desde USD $2,400 por persona (unos J$375,000), sin incluir vuelos."
+  },
+  "enquiry": {
+    "title": "Cuéntanos la forma del viaje",
+    "subtitle": "Tres preguntas ahora, los detalles después. Sin cuenta, sin pago.",
+    "whereLabel": "Hacia dónde",
+    "wherePrompt": "Elige un punto de partida",
+    "whenLabel": "Más o menos cuándo",
+    "whenPrompt": "Elige una temporada",
+    "partyLabel": "Cuántos viajan",
+    "partyPrompt": "Tamaño del grupo",
+    "party": {
+      "solo": "Solo yo",
+      "two": "Dos personas",
+      "family": "Familia (3–5)",
+      "group": "Grupo (6 o más)"
+    },
+    "months": {
+      "flex": "Aún sin fijar",
+      "novFeb": "Noviembre–febrero (seco, más fresco)",
+      "marMay": "Marzo–mayo",
+      "junAug": "Junio–agosto",
+      "sepOct": "Septiembre–octubre"
+    },
+    "submit": "Seguir por WhatsApp",
+    "submitHint": "Abre WhatsApp con tus respuestas ya escritas. Respondemos en un día laborable.",
+    "waMessage": "Hola Haymaca — quiero planear un viaje por Jamaica. Hacia dónde: {where}. Cuándo: {when}. Viajan: {party}.",
+    "validation": "Elige un punto de partida para saber por dónde empezar."
+  },
+  "destinations": {
+    "title": "A dónde enviamos a la gente",
+    "intro": "Cuatro lugares que conocemos calle por calle. Cada viaje se arma con alojamientos donde hemos dormido y botes en los que hemos montado, no con una lista de proveedores.",
+    "regionLabel": "Zona",
+    "bestLabel": "Mejores meses",
+    "fromLabel": "Desde",
+    "featured": "Insignia",
+    "items": {
+      "treasure-beach": {
+        "name": "Treasure Beach",
+        "region": "St. Elizabeth, costa sur",
+        "best": "Nov–abr",
+        "from": "USD $2,400",
+        "blurb": "Pueblos de pescadores en el lado seco de la isla. Casas de huéspedes comunitarias, un bote hasta el Pelican Bar y ni rastro de la hilera de resorts."
+      },
+      "port-antonio": {
+        "name": "Port Antonio",
+        "region": "Portland, noreste",
+        "best": "Dic–mar",
+        "from": "USD $3,100",
+        "blurb": "El rincón verde. Balsas de bambú por el Rio Grande, la Blue Lagoon antes de que lleguen los botes y cascadas a las que se llega a pie."
+      },
+      "blue-mountains": {
+        "name": "Blue Mountains",
+        "region": "St. Andrew, sobre Kingston",
+        "best": "Dic–abr",
+        "from": "USD $1,900",
+        "blurb": "Fincas de café a 1.200 metros, noches frías bajo mantas y la caminata antes del amanecer al Pico de 2.256 metros para ver salir el sol sobre las dos costas."
+      },
+      "frenchmans-cove": {
+        "name": "Frenchman's Cove",
+        "region": "Portland, al este de Port Antonio",
+        "best": "Nov–mar",
+        "from": "USD $2,700",
+        "blurb": "Una cala de arena blanca donde un río frío de agua dulce desemboca directo en el mar. Puedes nadar en los dos con una sola brazada."
+      }
+    }
+  },
+  "process": {
+    "title": "Cómo una consulta se convierte en un viaje",
+    "steps": {
+      "one": {
+        "title": "Nos escribes tres líneas",
+        "body": "Hacia dónde, más o menos cuándo, cuántos. Con eso nos basta para empezar."
+      },
+      "two": {
+        "title": "Respondemos con un plan real",
+        "body": "En un día laborable: alojamientos con nombre, un itinerario día a día y un precio en USD. Una propuesta, no un folleto."
+      },
+      "three": {
+        "title": "Ajustamos hasta que encaje",
+        "body": "Cambiar una casa de huéspedes, añadir un día de balsas, mover las fechas. Nada se reserva hasta que tú lo digas."
+      }
+    }
+  },
+  "contact": {
+    "title": "Habla con una persona",
+    "body": "Días laborables de 8:00 a 18:00, hora de Jamaica. WhatsApp suele ser la vía más rápida.",
+    "whatsapp": "Escribir por WhatsApp",
+    "whatsappMessage": "Hola Haymaca — tengo una pregunta sobre planear un viaje.",
+    "callLabel": "Llamar",
+    "phone": "+1 876 555 0148",
+    "emailLabel": "Correo",
+    "email": "hello@haymaca.travel",
+    "addressLabel": "Estudio",
+    "address": "12 Waterloo Road, Kingston 10, Jamaica"
+  },
+  "footer": {
+    "tagline": "Un estudio de viajes para Jamaica, sobre el terreno en Kingston.",
+    "rights": "© 2026 Haymaca Travel Ltd. Con licencia de la Jamaica Tourist Board.",
+    "backToTop": "Volver arriba"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Esa página se salió del mapa",
+    "body": "La página que buscas no está aquí. La costa, en cambio, sigue justo donde la dejaste.",
+    "home": "Volver a la página de inicio"
+  }
+}

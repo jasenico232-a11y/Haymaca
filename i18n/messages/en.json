@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Haymaca — Jamaica trips, planned on the ground",
+    "description": "A Kingston travel studio arranging private and small-group trips across Jamaica: Treasure Beach, Port Antonio, the Blue Mountains, Frenchman's Cove. Enquiries answered by a person within one working day."
+  },
+  "html": {
+    "localeName": "English"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "primaryNav": "Primary navigation",
+    "footerNav": "Footer navigation",
+    "languageRegion": "Language",
+    "decorativeRidge": "Silhouette of the Blue Mountain ridge"
+  },
+  "brand": {
+    "name": "Haymaca",
+    "meaning": "Taíno for \"land of wood and water\" — the island's older name."
+  },
+  "nav": {
+    "destinations": "Destinations",
+    "process": "How it works",
+    "contact": "Contact",
+    "enquire": "Plan a trip"
+  },
+  "localeSwitcher": {
+    "label": "Language",
+    "options": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "hero": {
+    "eyebrow": "Kingston-based travel studio · since 2016",
+    "headlineLead": "Jamaica, arranged by people who",
+    "headlineEmphasis": "live here",
+    "headlineTrail": ".",
+    "body": "We book the fishing boat, not the catamaran. Private and small-group trips across the island, planned around what you actually want to do — and answered by a person, not a form.",
+    "priceNote": "Trips from USD $2,400 per person (about J$375,000), flights excluded."
+  },
+  "enquiry": {
+    "title": "Tell us the shape of the trip",
+    "subtitle": "Three questions now, the details later. No account, no payment.",
+    "whereLabel": "Where to",
+    "wherePrompt": "Choose a starting point",
+    "whenLabel": "Roughly when",
+    "whenPrompt": "Pick a window",
+    "partyLabel": "How many travelling",
+    "partyPrompt": "Party size",
+    "party": {
+      "solo": "Just me",
+      "two": "Two of us",
+      "family": "Family (3–5)",
+      "group": "Group (6 or more)"
+    },
+    "months": {
+      "flex": "Not fixed yet",
+      "novFeb": "November–February (dry, cooler)",
+      "marMay": "March–May",
+      "junAug": "June–August",
+      "sepOct": "September–October"
+    },
+    "submit": "Continue on WhatsApp",
+    "submitHint": "Opens WhatsApp with your answers filled in. We reply within one working day.",
+    "waMessage": "Hi Haymaca — I'd like to plan a Jamaica trip. Where: {where}. When: {when}. Travelling: {party}.",
+    "validation": "Choose a starting point so we know where to begin."
+  },
+  "destinations": {
+    "title": "Where we send people",
+    "intro": "Four places we know street by street. Every trip is built from stays we have slept in and boats we have been on — not a supplier list.",
+    "regionLabel": "Region",
+    "bestLabel": "Best months",
+    "fromLabel": "From",
+    "featured": "Signature",
+    "items": {
+      "treasure-beach": {
+        "name": "Treasure Beach",
+        "region": "St. Elizabeth, south coast",
+        "best": "Nov–Apr",
+        "from": "USD $2,400",
+        "blurb": "Fishing villages on the dry side of the island. Community-run guesthouses, a boat out to the Pelican Bar, and not a resort strip in sight."
+      },
+      "port-antonio": {
+        "name": "Port Antonio",
+        "region": "Portland, north-east",
+        "best": "Dec–Mar",
+        "from": "USD $3,100",
+        "blurb": "The green corner. Bamboo rafting down the Rio Grande, the Blue Lagoon before the boats arrive, and waterfalls you reach on foot."
+      },
+      "blue-mountains": {
+        "name": "Blue Mountains",
+        "region": "St. Andrew, above Kingston",
+        "best": "Dec–Apr",
+        "from": "USD $1,900",
+        "blurb": "Coffee farms at 1,200 metres, cold nights under blankets, and the pre-dawn walk to the 2,256-metre Peak for sunrise over both coasts."
+      },
+      "frenchmans-cove": {
+        "name": "Frenchman's Cove",
+        "region": "Portland, east of Port Antonio",
+        "best": "Nov–Mar",
+        "from": "USD $2,700",
+        "blurb": "A white-sand cove where a cold freshwater river runs straight into the sea. You can swim in both within one stroke."
+      }
+    }
+  },
+  "process": {
+    "title": "How an enquiry becomes a trip",
+    "steps": {
+      "one": {
+        "title": "You send three lines",
+        "body": "Where, roughly when, how many. That is enough for us to start building."
+      },
+      "two": {
+        "title": "We reply with a real plan",
+        "body": "Within one working day: named stays, a day-by-day outline and a price in USD. A proposal, not a brochure."
+      },
+      "three": {
+        "title": "We adjust until it fits",
+        "body": "Swap a guesthouse, add a rafting day, move the dates. Nothing is booked until you say so."
+      }
+    }
+  },
+  "contact": {
+    "title": "Talk to a person",
+    "body": "Weekdays 8am–6pm Jamaica time. WhatsApp is usually the fastest way to reach us.",
+    "whatsapp": "Message on WhatsApp",
+    "whatsappMessage": "Hi Haymaca — I have a question about planning a trip.",
+    "callLabel": "Call",
+    "phone": "+1 876 555 0148",
+    "emailLabel": "Email",
+    "email": "hello@haymaca.travel",
+    "addressLabel": "Studio",
+    "address": "12 Waterloo Road, Kingston 10, Jamaica"
+  },
+  "footer": {
+    "tagline": "A travel studio for Jamaica, on the ground in Kingston.",
+    "rights": "© 2026 Haymaca Travel Ltd. Licensed by the Jamaica Tourist Board.",
+    "backToTop": "Back to top"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "That page has drifted off the map",
+    "body": "The page you asked for is not here. The coastline, though, is exactly where you left it.",
+    "home": "Back to the home page"
+  }
+}

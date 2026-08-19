@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-size: 18px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  /* Keyboard focus is always visible, in the river accent. */
+  :focus-visible {
+    outline: 2px solid theme("colors.river");
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: theme("colors.sun");
+    color: theme("colors.ink");
+  }
+
+  hr {
+    @apply border-line;
+  }
+
+  /*
+   * Minimum tap targets — WCAG 2.5.8 (AAA), 44×44 CSS px. Declared in the base
+   * layer so nothing interactive can ship undersized. Inline prose links stay
+   * inline (min-height is inert on an inline box); anything that reads as a
+   * control — form fields, buttons, and links marked data-tap — gets a real
+   * 44px box that centres its label.
+   */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  a[data-tap="true"],
+  label[data-tap="true"] {
+    min-height: 44px;
+  }
+
+  button,
+  [role="button"],
+  a[data-tap="true"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding-block: 10px;
+    padding-inline: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
