@@ -220,7 +220,7 @@ function ExpiredRecovery({
       <Link
         href={`/${locale}/book/${booking.tourSlug}`}
         data-tap="true"
-        className="rounded-control bg-forest px-5 text-base font-medium text-paper transition-colors hover:bg-ink"
+        className="rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
       >
         {strings.rebook.replace("{date}", formatDepartureDate(next.date, locale))}
       </Link>

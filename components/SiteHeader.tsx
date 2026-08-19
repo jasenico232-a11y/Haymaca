@@ -52,7 +52,7 @@ export function SiteHeader({
           <Link
             href={`${base}#enquiry`}
             data-tap="true"
-            className="rounded-control bg-forest px-4 text-sm font-medium text-paper transition-colors hover:bg-ink"
+            className="rounded-control bg-sun px-4 text-sm font-medium text-ink transition hover:brightness-95"
           >
             {dict.nav.enquire}
           </Link>

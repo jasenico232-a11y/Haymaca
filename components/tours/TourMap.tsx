@@ -25,11 +25,12 @@ const PAPER = "#FBFAF6";
 // One-path white glyphs, drawn inside the coloured pin so colour is paired with
 // an icon on the map itself (viewBox 0 0 20 20).
 const PIN_GLYPH: Record<CategorySlug, string> = {
-  adventure: "M2 16 L7 7 L10 11 L13 5 L18 16 Z",
-  water: "M2 8 q3 -3 6 0 t6 0 M2 13 q3 -3 6 0 t6 0",
-  culture: "M4 8 L10 4 L16 8 M6 8 v6 M10 8 v6 M14 8 v6 M4 15 h12",
-  food: "M8 3 h4 M9 3 v3 l-1 2 v9 h4 v-9 l-1 -2 v-3 M8 12 h4",
-  wildlife: "M17 4 C8 4 4 8 4 15 c6 -2 10 -6 13 -11 -3 4 -7 6 -10 10",
+  waterfalls: "M6 4v6 M10 4v6 M14 4v6 M3 14 q3 -2 6 0 t6 0",
+  "beach-boat": "M3 14 h14 l-2 3 H5 Z M10 3 v10 M10 5 l5 7 H10",
+  "music-culture": "M8 15 V5 l8 -1.6 v8 M8 15 a2 2 0 1 1 -4 0 2 2 0 0 1 4 0",
+  "blue-mountain": "M2 16 L7 7 L10 11 L13 5 L18 16 Z",
+  "food-rum": "M8 3 h4 M9 3 v3 l-1 2 v9 h4 v-9 l-1 -2 v-3 M8 12 h4",
+  charters: "M10 4 a1.5 1.5 0 1 1 0 3 M10 6 v11 M5 11 a5 5 0 0 0 10 0 M5 11 H4 M15 11 h1",
 };
 
 const OSM_STYLE = {

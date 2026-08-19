@@ -152,11 +152,12 @@
       "sort": "Sort by"
     },
     "categories": {
-      "adventure": "Adventure",
-      "water": "Water",
-      "culture": "Culture & heritage",
-      "food": "Food & rum",
-      "wildlife": "Nature & wildlife"
+      "waterfalls": "Waterfalls & Rivers",
+      "beach-boat": "Beach & Boat",
+      "music-culture": "Music & Culture",
+      "blue-mountain": "Blue Mountain",
+      "food-rum": "Food & Rum",
+      "charters": "Private Charters"
     },
     "durationBands": {
       "half-day": "Half day",

@@ -288,7 +288,7 @@ export function BookingForm({
       <button
         type="submit"
         disabled={submitting || !selected}
-        className="mt-5 w-full rounded-control bg-forest px-5 text-base font-medium text-paper transition-colors hover:bg-ink disabled:opacity-60"
+        className="mt-5 w-full rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95 disabled:opacity-60"
       >
         {submitting ? labels.holding : labels.continue}
       </button>

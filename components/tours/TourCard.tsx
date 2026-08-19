@@ -58,7 +58,7 @@ export function TourCard({ view }: { view: TourView }) {
         <Link
           href={view.bookHref}
           data-tap="true"
-          className="mt-4 w-full rounded-control border border-forest px-4 text-sm font-medium text-forest transition-colors hover:bg-forest hover:text-paper"
+          className="mt-4 w-full rounded-control bg-sun px-4 text-sm font-medium text-ink transition hover:brightness-95"
         >
           {view.bookLabel}
         </Link>

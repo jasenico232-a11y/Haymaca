@@ -21,7 +21,7 @@ export function Process({ dict }: { dict: Dictionary }) {
               key={step.title}
               className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 border-t border-paper/20 py-7 first:border-t-0 first:pt-0"
             >
-              <span className="font-display text-2xl font-semibold text-sun">
+              <span className="font-display text-2xl font-semibold text-sea">
                 {`0${index + 1}`}
               </span>
               <div>

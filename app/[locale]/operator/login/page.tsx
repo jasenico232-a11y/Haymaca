@@ -62,7 +62,7 @@ export default async function OperatorLogin({
         ) : null}
         <button
           type="submit"
-          className="mt-4 w-full rounded-control bg-forest px-5 text-base font-medium text-paper transition-colors hover:bg-ink"
+          className="mt-4 w-full rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
         >
           {op.signIn}
         </button>

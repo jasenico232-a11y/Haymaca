@@ -152,11 +152,12 @@
       "sort": "Ordenar por"
     },
     "categories": {
-      "adventure": "Aventura",
-      "water": "Agua",
-      "culture": "Cultura y patrimonio",
-      "food": "Comida y ron",
-      "wildlife": "Naturaleza y fauna"
+      "waterfalls": "Cascadas y ríos",
+      "beach-boat": "Playa y bote",
+      "music-culture": "Música y cultura",
+      "blue-mountain": "Blue Mountain",
+      "food-rum": "Comida y ron",
+      "charters": "Chárteres privados"
     },
     "durationBands": {
       "half-day": "Medio día",

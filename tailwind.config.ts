@@ -25,11 +25,15 @@ const config: Config = {
         paper: "#FBFAF6", // warm off-white page background, never pure #FFF
         forest: "#1F4A34", // deep green, primary accent — the hills, not a logo blue
         river: "#2E7D8C", // muted teal, secondary accent and links
-        sun: "#E8A33D", // warm amber, reserved for featured / emphasis markers
+        sun: "#E8A33D", // calls to action only — never decorative
         muted: "#67675E", // secondary text
         line: "#E0DDD3", // hairlines and dividers
-        clay: "#B4552E", // category accent — culture & heritage
-        moss: "#6B7B3A", // category accent — nature & wildlife
+        // Category accents (six categories). river = Waterfalls & Rivers,
+        // forest = Blue Mountain; the rest are named here.
+        clay: "#B4552E", // Music & Culture
+        sea: "#3F93B3", // Beach & Boat
+        rum: "#8A5A2B", // Food & Rum
+        marine: "#3C5A6B", // Private Charters
       },
       fontFamily: {
         // Wired to next/font CSS variables (see lib/fonts). display is the

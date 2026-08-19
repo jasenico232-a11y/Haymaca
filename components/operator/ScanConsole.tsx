@@ -199,7 +199,7 @@ export function ScanConsole({ labels }: { labels: Labels }) {
         />
         <button
           type="submit"
-          className="shrink-0 rounded-control bg-forest px-4 text-sm font-medium text-paper transition-colors hover:bg-ink"
+          className="shrink-0 rounded-control bg-sun px-4 text-sm font-medium text-ink transition hover:brightness-95"
         >
           {labels.scanButton}
         </button>

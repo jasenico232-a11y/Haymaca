@@ -8,7 +8,7 @@ import type { Tour } from "./model";
 export const tours: Tour[] = [
   {
     slug: "blue-mountain-peak-sunrise",
-    category: "adventure",
+    category: "blue-mountain",
     region: "blue-mountains",
     departure: "kingston",
     durationHours: 11,
@@ -19,7 +19,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "rio-grande-rafting",
-    category: "water",
+    category: "waterfalls",
     region: "portland",
     departure: "port-antonio",
     durationHours: 4,
@@ -30,7 +30,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "pelican-bar-boat",
-    category: "water",
+    category: "beach-boat",
     region: "south-coast",
     departure: "treasure-beach",
     durationHours: 3,
@@ -41,7 +41,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "reach-falls-hike",
-    category: "adventure",
+    category: "waterfalls",
     region: "portland",
     departure: "port-antonio",
     durationHours: 5,
@@ -52,7 +52,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "kingston-heritage-walk",
-    category: "culture",
+    category: "music-culture",
     region: "kingston",
     departure: "kingston",
     durationHours: 4,
@@ -63,7 +63,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "appleton-rum-estate",
-    category: "food",
+    category: "food-rum",
     region: "cockpit",
     departure: "black-river",
     durationHours: 8,
@@ -74,7 +74,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "cockpit-birding",
-    category: "wildlife",
+    category: "blue-mountain",
     region: "cockpit",
     departure: "montego-bay",
     durationHours: 6,
@@ -85,7 +85,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "blue-lagoon-swim",
-    category: "water",
+    category: "beach-boat",
     region: "portland",
     departure: "port-antonio",
     durationHours: 3,
@@ -96,7 +96,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "black-river-safari",
-    category: "wildlife",
+    category: "waterfalls",
     region: "south-coast",
     departure: "black-river",
     durationHours: 4,
@@ -107,7 +107,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "blue-mountain-coffee",
-    category: "food",
+    category: "food-rum",
     region: "blue-mountains",
     departure: "kingston",
     durationHours: 6,
@@ -118,7 +118,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "island-traverse-7day",
-    category: "adventure",
+    category: "charters",
     region: "kingston",
     departure: "kingston",
     durationHours: 168,
@@ -129,7 +129,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "accompong-maroon",
-    category: "culture",
+    category: "music-culture",
     region: "cockpit",
     departure: "montego-bay",
     durationHours: 8,
@@ -140,7 +140,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "south-coast-3day",
-    category: "water",
+    category: "beach-boat",
     region: "south-coast",
     departure: "treasure-beach",
     durationHours: 72,

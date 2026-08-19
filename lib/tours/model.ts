@@ -5,11 +5,12 @@
  */
 
 export type CategorySlug =
-  | "adventure"
-  | "water"
-  | "culture"
-  | "food"
-  | "wildlife";
+  | "waterfalls"
+  | "beach-boat"
+  | "music-culture"
+  | "blue-mountain"
+  | "food-rum"
+  | "charters";
 
 export type RegionSlug =
   | "south-coast"
@@ -47,21 +48,24 @@ export type Tour = {
 };
 
 export const categoryOrder: CategorySlug[] = [
-  "adventure",
-  "water",
-  "culture",
-  "food",
-  "wildlife",
+  "waterfalls",
+  "beach-boat",
+  "music-culture",
+  "blue-mountain",
+  "food-rum",
+  "charters",
 ];
 
 /** Hex per category, for the map (paint expressions need real colours). Kept in
- *  sync with the Tailwind tokens of the same name in tailwind.config.ts. */
+ *  sync with the Tailwind tokens in tailwind.config.ts. None use sun — that is
+ *  reserved for calls to action. */
 export const categoryColor: Record<CategorySlug, string> = {
-  adventure: "#1F4A34", // forest
-  water: "#2E7D8C", // river
-  culture: "#B4552E", // clay
-  food: "#E8A33D", // sun
-  wildlife: "#6B7B3A", // moss
+  waterfalls: "#2E7D8C", // river
+  "beach-boat": "#3F93B3", // sea
+  "music-culture": "#B4552E", // clay
+  "blue-mountain": "#1F4A34", // forest
+  "food-rum": "#8A5A2B", // rum
+  charters: "#3C5A6B", // marine
 };
 
 /**
@@ -73,11 +77,12 @@ export const categoryAccent: Record<
   CategorySlug,
   { icon: string; chip: string }
 > = {
-  adventure: { icon: "text-forest", chip: "border-forest/30 bg-forest/5" },
-  water: { icon: "text-river", chip: "border-river/30 bg-river/5" },
-  culture: { icon: "text-clay", chip: "border-clay/30 bg-clay/5" },
-  food: { icon: "text-sun", chip: "border-sun/50 bg-sun/10" },
-  wildlife: { icon: "text-moss", chip: "border-moss/30 bg-moss/5" },
+  waterfalls: { icon: "text-river", chip: "border-river/30 bg-river/5" },
+  "beach-boat": { icon: "text-sea", chip: "border-sea/30 bg-sea/5" },
+  "music-culture": { icon: "text-clay", chip: "border-clay/30 bg-clay/5" },
+  "blue-mountain": { icon: "text-forest", chip: "border-forest/30 bg-forest/5" },
+  "food-rum": { icon: "text-rum", chip: "border-rum/30 bg-rum/5" },
+  charters: { icon: "text-marine", chip: "border-marine/30 bg-marine/5" },
 };
 
 export const durationBands: DurationBand[] = [

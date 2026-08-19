@@ -123,7 +123,7 @@ export default async function ToursPage({
                 <Link
                   href={`/${locale}/tours`}
                   data-tap="true"
-                  className="mt-6 inline-flex rounded-control bg-forest px-5 text-base font-medium text-paper transition-colors hover:bg-ink"
+                  className="mt-6 inline-flex rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
                 >
                   {t.empty.action}
                 </Link>

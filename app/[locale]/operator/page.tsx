@@ -65,7 +65,7 @@ export default async function OperatorPage({
           <Link
             href={`/${locale}/operator/scan`}
             data-tap="true"
-            className="rounded-control bg-forest px-4 text-sm font-medium text-paper transition-colors hover:bg-ink"
+            className="rounded-control bg-sun px-4 text-sm font-medium text-ink transition hover:brightness-95"
           >
             {op.scan}
           </Link>

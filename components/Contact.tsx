@@ -21,7 +21,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
             data-tap="true"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 rounded-control bg-forest px-5 text-base font-medium text-paper transition-colors hover:bg-ink"
+            className="mt-7 rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
           >
             {dict.contact.whatsapp}
           </a>

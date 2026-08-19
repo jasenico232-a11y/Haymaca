@@ -30,7 +30,7 @@ export function Destinations({ dict }: { dict: Dictionary }) {
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-display text-xl text-ink">{item.name}</h3>
                   {featured ? (
-                    <span className="rounded-control bg-sun px-2 py-1 text-xs font-medium uppercase tracking-wide text-ink">
+                    <span className="rounded-control border border-forest/40 bg-forest/5 px-2 py-1 text-xs font-medium uppercase tracking-wide text-forest">
                       {dict.destinations.featured}
                     </span>
                   ) : null}

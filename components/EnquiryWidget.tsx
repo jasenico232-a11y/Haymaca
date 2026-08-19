@@ -167,7 +167,7 @@ export function EnquiryWidget({
 
       <button
         type="submit"
-        className="mt-5 w-full rounded-control bg-forest px-5 text-base font-medium text-paper transition-colors hover:bg-ink"
+        className="mt-5 w-full rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
       >
         {labels.submit}
       </button>
