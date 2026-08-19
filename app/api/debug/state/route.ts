@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getBookingStore } from "@/lib/booking/store";
+import { signTicket } from "@/lib/tickets/token";
 
 /**
  * Test-only seam, gated behind ENABLE_TEST_HOOKS. Returns booking counts and,
@@ -23,8 +24,13 @@ export async function GET(request: Request) {
           reference: one.reference,
           status: one.status,
           eTicketIssued: one.eTicketIssued,
+          checkedInAt: one.checkedInAt,
           depositCents: one.depositCents,
           totalCents: one.totalCents,
+          ticketToken:
+            one.status === "confirmed"
+              ? signTicket(one.id, one.departureId)
+              : null,
         }
       : null,
   });

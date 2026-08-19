@@ -1,16 +1,25 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
+import { headers } from "next/headers";
+import QRCode from "qrcode";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale, type Locale } from "@/i18n/config";
-import { nextDepartureFor, reconcileBooking } from "@/lib/booking/service";
+import {
+  cancelByCustomer,
+  nextDepartureFor,
+  reconcileBooking,
+} from "@/lib/booking/service";
 import { getBookingStore } from "@/lib/booking/store";
 import { formatUsd } from "@/lib/booking/money";
 import { formatDepartureDate } from "@/lib/booking/format";
+import { signTicket } from "@/lib/tickets/token";
+import { rateLimit } from "@/lib/rate-limit";
 import type { Booking } from "@/lib/booking/types";
 
 export const dynamic = "force-dynamic";
 
 type Params = { locale: string; reference: string };
+type Strings = ReturnType<typeof getDictionary>["book"]["status"];
 
 function tourTitle(dict: ReturnType<typeof getDictionary>, slug: string): string {
   const items = dict.tours.items as Record<string, { title: string }>;
@@ -25,19 +34,43 @@ export default async function BookingStatusPage({
   const { locale, reference } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
+  const s = dict.book.status;
 
-  // Server-side reconciliation — the status shown is derived from the store /
-  // provider, never from anything the client asserts.
+  // This route is reachable only by an unguessable reference, but it is
+  // enumerable in principle — rate-limit per client so it cannot be swept.
+  const forwarded = (await headers()).get("x-forwarded-for");
+  const ip = forwarded?.split(",")[0]?.trim() || "unknown";
+  if (!rateLimit(`booking-view:${ip}`, 40, 60_000).ok) {
+    return (
+      <div className="mx-auto max-w-xl px-5 py-24 text-center">
+        <p className="text-base text-muted">{s.rateLimited}</p>
+      </div>
+    );
+  }
+
   const booking = await reconcileBooking(reference);
   if (!booking) notFound();
 
   const store = getBookingStore();
   const departure = store.getDeparture(booking.departureId);
-  const s = dict.book.status;
   const title = tourTitle(dict, booking.tourSlug);
   const departsLabel = departure
-    ? formatDepartureDate(departure.date, locale as Locale)
+    ? formatDepartureDate(departure.date, locale)
     : "";
+
+  const isConfirmed = booking.status === "confirmed";
+  const qrDataUrl = isConfirmed
+    ? await QRCode.toDataURL(signTicket(booking.id, booking.departureId), {
+        margin: 1,
+        width: 220,
+      })
+    : null;
+
+  async function cancel() {
+    "use server";
+    await cancelByCustomer(reference);
+    redirect(`/${locale}/booking/${reference}`);
+  }
 
   return (
     <div className="mx-auto max-w-xl px-5 py-12 md:py-16">
@@ -47,15 +80,53 @@ export default async function BookingStatusPage({
         <Row label={s.reference} value={booking.reference} mono />
         <Row label={s.departs} value={`${title} · ${departsLabel}`} />
         <Row label={s.party} value={String(booking.partySize)} />
-        <Row
-          label={s.depositPaid}
-          value={formatUsd(booking.depositCents)}
-        />
+        <Row label={s.depositPaid} value={formatUsd(booking.depositCents)} />
         <Row label={s.total} value={formatUsd(booking.totalCents)} />
       </dl>
 
+      {isConfirmed && qrDataUrl ? (
+        <section className="mt-8 rounded-card border border-line bg-paper p-6">
+          <h2 className="font-display text-lg text-ink">{s.eticketTitle}</h2>
+          <p className="mt-1 text-sm text-muted">{s.eticketBody}</p>
+          <div className="mt-4 flex flex-wrap items-center gap-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img alt={s.qrAlt} src={qrDataUrl} width={180} height={180} className="rounded-control border border-line" />
+            <div className="flex flex-col items-start gap-3">
+              {booking.checkedInAt ? (
+                <span className="inline-flex items-center gap-2 rounded-control border border-forest/30 bg-forest/5 px-3 py-1 text-sm font-medium text-forest">
+                  <span
+                    aria-hidden="true"
+                    className="inline-block h-2 w-2 rounded-control bg-forest"
+                  />
+                  {s.checkedIn}
+                </span>
+              ) : null}
+              <a
+                href={`/${locale}/booking/${reference}/ticket`}
+                data-tap="true"
+                className="rounded-control border border-forest px-4 text-sm font-medium text-forest transition-colors hover:bg-forest hover:text-paper"
+              >
+                {s.downloadPdf}
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {booking.status === "hold_expired" ? (
-        <ExpiredRecovery booking={booking} locale={locale as Locale} strings={s} />
+        <ExpiredRecovery booking={booking} locale={locale} strings={s} />
+      ) : null}
+
+      {isConfirmed ? (
+        <form action={cancel} className="mt-8">
+          <button
+            type="submit"
+            className="rounded-control border border-line px-4 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
+          >
+            {s.cancel}
+          </button>
+          <p className="mt-2 text-xs text-muted">{s.cancelWithin}</p>
+        </form>
       ) : null}
 
       <div className="mt-8">
@@ -77,7 +148,7 @@ function StatusHeader({
   email,
 }: {
   booking: Booking;
-  strings: ReturnType<typeof getDictionary>["book"]["status"];
+  strings: Strings;
   email: string;
 }) {
   const map: Record<Booking["status"], { title: string; body: string; dot: string }> =
@@ -135,7 +206,7 @@ function ExpiredRecovery({
 }: {
   booking: Booking;
   locale: Locale;
-  strings: ReturnType<typeof getDictionary>["book"]["status"];
+  strings: Strings;
 }) {
   const next = nextDepartureFor(booking);
   if (!next)

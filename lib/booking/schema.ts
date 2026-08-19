@@ -26,5 +26,6 @@ export type HoldRequest = z.infer<typeof holdRequestSchema>;
 export const bookingRequestSchema = z.object({
   holdId: z.uuid(),
   lead: leadSchema,
+  requirements: z.string().trim().max(500).optional(),
 });
 export type BookingRequest = z.infer<typeof bookingRequestSchema>;

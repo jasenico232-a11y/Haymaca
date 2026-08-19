@@ -24,6 +24,8 @@ type Labels = {
   leadPhone: string;
   continue: string;
   holding: string;
+  requirements: string;
+  requirementsHint: string;
   depositLine: string; // "Deposit due now: {deposit} of {total}"
   errors: {
     sold_out: string;
@@ -59,6 +61,7 @@ export function BookingForm({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [requirements, setRequirements] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -118,7 +121,13 @@ export function BookingForm({
       const bookingRes = await fetch("/api/bookings", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ holdId, lead: parsed.data }),
+        body: JSON.stringify({
+          holdId,
+          lead: parsed.data,
+          ...(requirements.trim()
+            ? { requirements: requirements.trim() }
+            : {}),
+        }),
       });
       if (!bookingRes.ok) {
         const data = await bookingRes.json().catch(() => ({}));
@@ -250,6 +259,20 @@ export function BookingForm({
             <p className={errorClass}>{fieldErrors.phone}</p>
           ) : null}
         </div>
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="requirements" className={labelClass}>
+          {labels.requirements}
+        </label>
+        <textarea
+          id="requirements"
+          rows={2}
+          className={fieldClass}
+          value={requirements}
+          onChange={(event) => setRequirements(event.target.value)}
+        />
+        <p className="mt-1 text-xs text-muted">{labels.requirementsHint}</p>
       </div>
 
       {selected ? (

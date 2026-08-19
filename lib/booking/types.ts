@@ -37,12 +37,14 @@ export type Booking = {
   holdId: string;
   partySize: number;
   lead: Lead;
+  requirements: string | null;
   totalCents: number;
   depositCents: number;
   currency: "USD";
   paymentRef: string | null;
   status: BookingStatus;
   eTicketIssued: boolean;
+  checkedInAt: number | null;
   cancellation: { kind: CancellationKind; at: number } | null;
   createdAt: number;
   updatedAt: number;

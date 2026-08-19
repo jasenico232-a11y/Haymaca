@@ -125,6 +125,7 @@ export class InMemoryBookingStore {
     holdId: string;
     partySize: number;
     lead: Lead;
+    requirements?: string | null;
     totalCents: number;
     depositCents: number;
   }): Promise<Booking> {
@@ -138,12 +139,14 @@ export class InMemoryBookingStore {
         holdId: input.holdId,
         partySize: input.partySize,
         lead: input.lead,
+        requirements: input.requirements ?? null,
         totalCents: input.totalCents,
         depositCents: input.depositCents,
         currency: "USD",
         paymentRef: null,
         status: "pending_payment",
         eTicketIssued: false,
+        checkedInAt: null,
         cancellation: null,
         createdAt: now,
         updatedAt: now,
@@ -167,6 +170,50 @@ export class InMemoryBookingStore {
   getBookingByReference(reference: string): Booking | null {
     const id = this.refToId.get(reference);
     return id ? (this.bookings.get(id) ?? null) : null;
+  }
+
+  getBookingById(id: string): Booking | null {
+    return this.bookings.get(id) ?? null;
+  }
+
+  /** Mark a confirmed guest checked in. Idempotent — a second scan is a no-op. */
+  markCheckedIn(
+    bookingId: string,
+  ): Promise<{ ok: boolean; already: boolean; booking: Booking | null }> {
+    return this.mutex.run(() => {
+      const booking = this.bookings.get(bookingId);
+      if (!booking || booking.status !== "confirmed")
+        return { ok: false, already: false, booking: booking ?? null };
+      if (booking.checkedInAt !== null)
+        return { ok: true, already: true, booking };
+      booking.checkedInAt = Date.now();
+      booking.updatedAt = booking.checkedInAt;
+      return { ok: true, already: false, booking };
+    });
+  }
+
+  departuresOnDate(date: string): Departure[] {
+    return [...this.departures.values()]
+      .filter((d) => d.date === date)
+      .sort((a, b) => a.tourSlug.localeCompare(b.tourSlug));
+  }
+
+  confirmedBookingsForDeparture(departureId: string): Booking[] {
+    return [...this.bookings.values()].filter(
+      (b) => b.departureId === departureId && b.status === "confirmed",
+    );
+  }
+
+  /** Every real booking on a departure (confirmed or cancelled) — the manifest
+   *  keeps showing cancelled guests so history is never lost. */
+  bookingsForDeparture(departureId: string): Booking[] {
+    return [...this.bookings.values()]
+      .filter(
+        (b) =>
+          b.departureId === departureId &&
+          (b.status === "confirmed" || b.status === "cancelled"),
+      )
+      .sort((a, b) => a.lead.name.localeCompare(b.lead.name));
   }
 
   /**

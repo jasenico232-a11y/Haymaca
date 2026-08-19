@@ -25,6 +25,7 @@ export async function POST(request: Request) {
   const result = await startCheckout({
     holdId: parsed.data.holdId,
     lead: parsed.data.lead,
+    requirements: parsed.data.requirements,
     origin: new URL(request.url).origin,
   });
 

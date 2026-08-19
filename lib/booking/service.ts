@@ -1,5 +1,6 @@
 import { getPaymentProvider } from "@/lib/payments";
 import type { BookingDraft } from "@/lib/payments/provider";
+import { verifyTicket } from "@/lib/tickets/token";
 import { getBookingStore } from "./store";
 import { computeAmounts } from "./money";
 import { logEvent } from "./log";
@@ -54,6 +55,7 @@ export type StartCheckoutResult =
 export async function startCheckout(input: {
   holdId: string;
   lead: LeadInput;
+  requirements?: string;
   origin: string;
 }): Promise<StartCheckoutResult> {
   const store = getBookingStore();
@@ -77,6 +79,7 @@ export async function startCheckout(input: {
     holdId: hold.id,
     partySize: hold.partySize,
     lead: input.lead,
+    requirements: input.requirements ?? null,
     totalCents: amounts.totalCents,
     depositCents: amounts.depositCents,
   });
@@ -184,6 +187,46 @@ export async function reconcileBooking(reference: string): Promise<Booking | nul
 
 export function getBooking(reference: string): Booking | null {
   return getBookingStore().getBookingByReference(reference);
+}
+
+export type CheckInResult =
+  | {
+      ok: false;
+      reason: "invalid_token" | "not_found" | "wrong_departure" | "not_confirmed";
+    }
+  | {
+      ok: true;
+      already: boolean;
+      name: string;
+      partySize: number;
+      tourSlug: string;
+    };
+
+/**
+ * Operator scan. Verifies the signed ticket server-side — a forged token fails
+ * here — then marks the guest checked in. Idempotent: a re-scan reports
+ * already-checked-in rather than erroring.
+ */
+export async function checkInByToken(token: string): Promise<CheckInResult> {
+  const parsed = verifyTicket(token);
+  if (!parsed) return { ok: false, reason: "invalid_token" };
+
+  const store = getBookingStore();
+  const booking = store.getBookingById(parsed.bookingId);
+  if (!booking) return { ok: false, reason: "not_found" };
+  if (booking.departureId !== parsed.departureId)
+    return { ok: false, reason: "wrong_departure" };
+  if (booking.status !== "confirmed")
+    return { ok: false, reason: "not_confirmed" };
+
+  const result = await store.markCheckedIn(booking.id);
+  return {
+    ok: true,
+    already: result.already,
+    name: booking.lead.name,
+    partySize: booking.partySize,
+    tourSlug: booking.tourSlug,
+  };
 }
 
 /** When a hold expired mid-checkout, offer the next departure — never rebook. */

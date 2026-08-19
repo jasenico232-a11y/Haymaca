@@ -87,6 +87,8 @@ export default async function BookPage({
             leadPhone: dict.book.leadPhone,
             continue: dict.book.continue,
             holding: dict.book.holding,
+            requirements: dict.book.requirements,
+            requirementsHint: dict.book.requirementsHint,
             depositLine: dict.book.depositLine,
             errors: dict.book.errors,
             validation: dict.book.validation,
