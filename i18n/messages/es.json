@@ -190,7 +190,8 @@
       "currency": "USD",
       "departure": "Sale de",
       "nextDate": "Próxima fecha",
-      "durationLabel": "Duración"
+      "durationLabel": "Duración",
+      "book": "Reservar este tour"
     },
     "empty": {
       "title": "Ningún tour coincide con esos filtros",
@@ -263,6 +264,67 @@
         "title": "Costa sur en tres días",
         "summary": "Treasure Beach, Pelican Bar y YS Falls al ritmo pausado del sur."
       }
+    }
+  },
+  "book": {
+    "metaTitle": "Reservar — Haymaca",
+    "title": "Reservar",
+    "chooseDeparture": "Elige una salida",
+    "seatsLeft": "{n} plazas libres",
+    "soldOut": "Agotado",
+    "partyLabel": "Viajeros",
+    "leadName": "Nombre completo",
+    "leadEmail": "Correo",
+    "leadPhone": "Teléfono o WhatsApp",
+    "continue": "Reservar plazas y continuar",
+    "holding": "Reservando tus plazas…",
+    "depositLine": "Depósito a pagar ahora: {deposit} de {total}",
+    "noDepartures": "No hay salidas con fecha ahora mismo. Envía una consulta y organizamos una.",
+    "errors": {
+      "sold_out": "Esas plazas se acaban de ocupar. Elige otra salida.",
+      "hold_invalid": "Tu reserva temporal expiró. Elige una salida para empezar de nuevo.",
+      "departure_cancelled": "Esa salida ya no se realiza. Elige otra.",
+      "invalid": "Revisa los campos marcados e inténtalo de nuevo.",
+      "network": "Algo falló de nuestro lado. Inténtalo otra vez."
+    },
+    "validation": {
+      "name": "Escribe el nombre del viajero principal.",
+      "email": "Escribe un correo válido.",
+      "phone": "Escribe un teléfono para localizarte."
+    },
+    "checkout": {
+      "title": "Pago del depósito",
+      "provider": "el proveedor de pago",
+      "hostedNote": "Los datos de la tarjeta se introducen en la página segura de {provider}: nunca llegan a Haymaca.",
+      "depositDue": "Depósito a pagar",
+      "of": "de",
+      "pay": "Pagar depósito (demo)",
+      "fail": "Simular un pago fallido",
+      "cardField": "Número de tarjeta",
+      "cardHint": "Gestionado por el proveedor"
+    },
+    "status": {
+      "confirmedTitle": "Reserva confirmada",
+      "confirmedBody": "Tu depósito está pagado y tus plazas reservadas. Enviaremos la confirmación y el e-ticket a {email}.",
+      "pendingTitle": "Esperando tu pago",
+      "pendingBody": "Todavía no vemos el depósito. Si acabas de pagar, esta página se actualiza en un momento.",
+      "failedTitle": "El pago no se completó",
+      "failedBody": "No se cobró ningún depósito. Puedes empezar la reserva de nuevo.",
+      "expiredTitle": "Tus plazas reservadas se liberaron",
+      "expiredBody": "La reserva temporal de 15 minutos venció antes de que el depósito se acreditara, así que no te reasignamos automáticamente. La próxima salida con plazas:",
+      "expiredNoNext": "Ahora mismo no hay una salida posterior con plazas; envía una consulta y te buscamos un lugar.",
+      "cancelledTitle": "Reserva cancelada",
+      "cancelledCustomer": "Esta reserva se canceló a petición tuya.",
+      "cancelledWeather": "Esta salida se canceló por el clima. Tu depósito se está reembolsando.",
+      "reference": "Referencia",
+      "departs": "Sale",
+      "party": "Viajeros",
+      "depositPaid": "Depósito pagado",
+      "total": "Total del viaje",
+      "rebook": "Reservar el {date}",
+      "cancel": "Cancelar esta reserva",
+      "cancelWithin": "Cancelación gratuita hasta 7 días antes de la salida.",
+      "browse": "Ver todos los tours"
     }
   },
   "footer": {

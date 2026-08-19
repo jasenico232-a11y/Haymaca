@@ -149,8 +149,9 @@ export function middleware(request: NextRequest): NextResponse {
 }
 
 export const config = {
-  // Run on document routes; skip Next internals and any file with an extension.
+  // Run on document routes only: skip API route handlers (they must not be
+  // locale-redirected), Next internals, and any file with an extension.
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.).*)",
   ],
 };

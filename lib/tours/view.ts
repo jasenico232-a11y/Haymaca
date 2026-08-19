@@ -24,6 +24,8 @@ export type TourView = {
   priceLabel: string;
   nextDatePrefix: string;
   nextDateLabel: string;
+  bookHref: string;
+  bookLabel: string;
   coords: [number, number];
 };
 
@@ -94,6 +96,8 @@ export function resolveTour(
     priceLabel: `${dict.tours.card.currency} $${formatPrice(tour.priceUsd, locale)}`,
     nextDatePrefix: dict.tours.card.nextDate,
     nextDateLabel: next ? formatDate(next, locale) : "",
+    bookHref: `/${locale}/book/${tour.slug}`,
+    bookLabel: dict.tours.card.book,
     coords: tour.coords,
   };
 }

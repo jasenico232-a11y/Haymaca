@@ -190,7 +190,8 @@
       "currency": "USD",
       "departure": "Departs",
       "nextDate": "Next date",
-      "durationLabel": "Duration"
+      "durationLabel": "Duration",
+      "book": "Book this tour"
     },
     "empty": {
       "title": "No tours match those filters",
@@ -263,6 +264,67 @@
         "title": "South coast in three days",
         "summary": "Treasure Beach, Pelican Bar and YS Falls at a slow southern pace."
       }
+    }
+  },
+  "book": {
+    "metaTitle": "Book — Haymaca",
+    "title": "Book",
+    "chooseDeparture": "Choose a departure",
+    "seatsLeft": "{n} seats left",
+    "soldOut": "Sold out",
+    "partyLabel": "Travellers",
+    "leadName": "Full name",
+    "leadEmail": "Email",
+    "leadPhone": "Phone or WhatsApp",
+    "continue": "Hold seats and continue",
+    "holding": "Holding your seats…",
+    "depositLine": "Deposit due now: {deposit} of {total}",
+    "noDepartures": "No dated departures right now. Send an enquiry and we will arrange one.",
+    "errors": {
+      "sold_out": "Those seats just went. Pick another departure.",
+      "hold_invalid": "Your hold expired. Choose a departure to start again.",
+      "departure_cancelled": "That departure is no longer running. Pick another.",
+      "invalid": "Check the highlighted fields and try again.",
+      "network": "Something went wrong on our side. Try again."
+    },
+    "validation": {
+      "name": "Enter the lead traveller's name.",
+      "email": "Enter a valid email.",
+      "phone": "Enter a phone number we can reach you on."
+    },
+    "checkout": {
+      "title": "Deposit payment",
+      "provider": "the payment provider",
+      "hostedNote": "Card details are entered on {provider}'s secure page — they never reach Haymaca.",
+      "depositDue": "Deposit due",
+      "of": "of",
+      "pay": "Pay deposit (demo)",
+      "fail": "Simulate a failed payment",
+      "cardField": "Card number",
+      "cardHint": "Handled by the provider"
+    },
+    "status": {
+      "confirmedTitle": "Booking confirmed",
+      "confirmedBody": "Your deposit is paid and your seats are held. A confirmation and e-ticket are on their way to {email}.",
+      "pendingTitle": "Waiting for your payment",
+      "pendingBody": "We have not seen the deposit yet. If you have just paid, this page updates in a moment.",
+      "failedTitle": "The payment did not go through",
+      "failedBody": "No deposit was taken. You can start the booking again.",
+      "expiredTitle": "Your held seats were released",
+      "expiredBody": "The 15-minute hold ran out before the deposit cleared, so we did not rebook you automatically. The next departure with room:",
+      "expiredNoNext": "There is no later departure with room right now — send an enquiry and we will find you a place.",
+      "cancelledTitle": "Booking cancelled",
+      "cancelledCustomer": "This booking was cancelled at your request.",
+      "cancelledWeather": "This departure was cancelled for weather. Your deposit is being refunded.",
+      "reference": "Reference",
+      "departs": "Departs",
+      "party": "Travellers",
+      "depositPaid": "Deposit paid",
+      "total": "Trip total",
+      "rebook": "Book {date} instead",
+      "cancel": "Cancel this booking",
+      "cancelWithin": "Free cancellation up to 7 days before departure.",
+      "browse": "Browse all tours"
     }
   },
   "footer": {

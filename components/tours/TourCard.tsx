@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { TourView } from "@/lib/tours/view";
 import { CategoryChip } from "./CategoryChip";
 import { TourThumb } from "./TourThumb";
@@ -53,6 +54,14 @@ export function TourCard({ view }: { view: TourView }) {
           {view.nextDatePrefix}:{" "}
           <span className="font-medium text-ink">{view.nextDateLabel}</span>
         </p>
+
+        <Link
+          href={view.bookHref}
+          data-tap="true"
+          className="mt-4 w-full rounded-control border border-forest px-4 text-sm font-medium text-forest transition-colors hover:bg-forest hover:text-paper"
+        >
+          {view.bookLabel}
+        </Link>
       </div>
     </article>
   );
