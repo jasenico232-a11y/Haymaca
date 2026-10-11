@@ -1,6 +1,6 @@
 /**
  * Locale configuration. Adding a locale means adding it here and dropping a
- * matching catalogue in i18n/messages — nothing in the components hardcodes a
+ * matching catalogue in i18n/messages; nothing in the components hardcodes a
  * language.
  */
 export const locales = ["en", "es"] as const;

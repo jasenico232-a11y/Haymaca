@@ -4,10 +4,12 @@ import {
   durationBandOf,
   durationBands,
   priceBandOf,
+  placeOrder,
   priceBands,
   sortKeys,
   type CategorySlug,
   type DurationBand,
+  type PlaceSlug,
   type PriceBand,
   type SortKey,
   type Tour,
@@ -18,6 +20,7 @@ export type FilterState = {
   categories: CategorySlug[];
   durations: DurationBand[];
   prices: PriceBand[];
+  places: PlaceSlug[];
   date: string | null;
   sort: SortKey;
   view: ViewMode;
@@ -56,6 +59,7 @@ export function parseFilters(params: RawParams): FilterState {
     categories: readList(params.category, categoryOrder),
     durations: readList(params.duration, durationBands),
     prices: readList(params.price, priceBands),
+    places: readList(params.from, placeOrder),
     date: rawDate && ISO_DATE.test(rawDate) ? rawDate : null,
     sort: readOne(params.sort, sortKeys, "popularity"),
     view: readOne(params.view, ["grid", "map"] as const, "grid"),
@@ -79,13 +83,14 @@ function sortTours(list: Tour[], sort: SortKey): Tour[] {
 
 /** Server-side: apply the URL-derived filters, then sort. */
 export function filterTours(state: FilterState): Tour[] {
-  const { categories, durations, prices, date } = state;
+  const { categories, durations, prices, places, date } = state;
   const matched = tours.filter((tour) => {
     if (categories.length && !categories.includes(tour.category)) return false;
     if (durations.length && !durations.includes(durationBandOf(tour.durationHours)))
       return false;
     if (prices.length && !prices.includes(priceBandOf(tour.priceUsd)))
       return false;
+    if (places.length && !places.includes(tour.departure)) return false;
     if (date && !tour.availableDates.some((available) => available >= date))
       return false;
     return true;
@@ -99,6 +104,7 @@ export function hasActiveFilters(state: FilterState): boolean {
     state.categories.length > 0 ||
     state.durations.length > 0 ||
     state.prices.length > 0 ||
+    state.places.length > 0 ||
     state.date !== null
   );
 }

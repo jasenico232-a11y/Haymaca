@@ -17,6 +17,7 @@ export type DepartureOption = {
 type Labels = {
   chooseDeparture: string;
   seatsLeft: string; // "{n} seats left"
+  departureOption: string; // "{date}: {seats}, {price} each"
   soldOut: string;
   partyLabel: string;
   leadName: string;
@@ -184,7 +185,10 @@ export function BookingForm({
                 value={option.id}
                 disabled={option.soldOut}
               >
-                {`${option.dateLabel} · ${seats} · ${usd(option.priceCents)}`}
+                {labels.departureOption
+                  .replace("{date}", option.dateLabel)
+                  .replace("{seats}", seats)
+                  .replace("{price}", usd(option.priceCents))}
               </option>
             );
           })}

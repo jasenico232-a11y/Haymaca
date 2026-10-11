@@ -1,9 +1,9 @@
-# Booking & payments — Supabase schema
+# Booking and payments: Supabase schema
 
 The app talks to a `BookingStore` interface (`lib/booking/store.ts`). Today an
 in-memory implementation backs it so the whole flow is testable without a
 database. In production the same surface is backed by Supabase using the schema
-below. **This SQL is not run by the app** — apply it as a migration.
+below. **This SQL is not run by the app**; apply it as a migration.
 
 The one behaviour the store must guarantee is that holding seats is atomic under
 concurrency (no overselling). In memory that is a mutex; in Postgres it is a
@@ -128,7 +128,7 @@ $$;
   All access is through server routes using the service role key (server-only,
   never `NEXT_PUBLIC_`).
 - Customers reach a booking only by its unguessable `reference` uuid, via the
-  rate-limited `/booking/[reference]` route — never by direct table access.
+  rate-limited `/booking/[reference]` route, never by direct table access.
 - The `/operator` view reads manifests through an authenticated server session,
   not the anon key.
 
@@ -136,7 +136,7 @@ $$;
 
 `payment_ref` is set when checkout starts. A booking moves to `confirmed` **only**
 inside the webhook handler (signature-verified) or a server-side `getStatus`
-reconciliation — never from a client request. `payment_events.event_id` being the
+reconciliation, never from a client request. `payment_events.event_id` being the
 primary key means the confirming insert is idempotent: a provider retry cannot
 create or double-confirm a booking.
 

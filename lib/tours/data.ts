@@ -2,7 +2,7 @@ import type { Tour } from "./model";
 
 /**
  * The catalogue. Coordinates are real points on the island; dates are seed
- * departures from late 2026 into 2027. In production this comes from the CMS —
+ * departures from late 2026 into 2027. In production this comes from the CMS;
  * the shape is what the filter, grid and map read.
  */
 export const tours: Tour[] = [

@@ -1,4 +1,4 @@
-# Alignment — Tours & Excursions Platform spec
+# Alignment: Tours and Excursions Platform spec
 
 This build was produced from the Tour & Excursion Platform prompt pack, so it
 already matches the contract on the big things. This note records what aligns,
@@ -9,8 +9,8 @@ recommendation for each.
 
 | Spec area | Status |
 |-----------|--------|
-| Tokens (ink/paper/forest/river/sun/muted/line, 14–60 scale, card 6px, control 4px) | Exact |
-| Display General Sans / body Inter, self-hosted via next/font | Inter real; **General Sans stand-in** (Hanken Grotesk) — Fontshare is blocked in the build env; drop-in documented in `lib/fonts/README.md` |
+| Tokens (ink/paper/forest/river/sun/muted/line, 14 to 60 scale, card 6px, control 4px) | Exact |
+| Display General Sans / body Inter, self-hosted via next/font | Inter real; **General Sans stand-in** (Hanken Grotesk): Fontshare is blocked in the build env; drop-in documented in `lib/fonts/README.md` |
 | i18n en/es under `app/[locale]`, middleware negotiation + cookie override | Yes |
 | Security: nonce CSP (enforcing), HSTS, nosniff, Referrer-Policy, Permissions-Policy | Yes |
 | 44px tap targets, phone-first | Yes |
@@ -32,7 +32,7 @@ recommendation for each.
 
 `sun` is still used for genuine **error / warning / attention** states (form
 validation, failed/expired payment, the operator's offline indicator). Those are
-semantic, not decorative — there is no separate warning token in the palette. Flagged here so the choice is explicit.
+semantic, not decorative, and there is no separate warning token in the palette. Flagged here so the choice is explicit.
 
 axe-core stays at **0 critical / 0 serious** across EN and ES after the recolour
 (ink-on-sun passes AA).
@@ -40,7 +40,7 @@ axe-core stays at **0 critical / 0 serious** across EN and ES after the recolour
 ## Deployment
 
 `vercel.json` now pins `"framework": "nextjs"`. The failed build errored with
-*No Output Directory named "dist"* — the Next build itself succeeded (22 pages);
+*No Output Directory named "dist"*. The Next build itself succeeded (22 pages);
 Vercel just wasn't treating the project as Next.js. If the error persists, set
 **Project → Settings → Build & Development → Framework Preset = Next.js** and
 clear any "Output Directory" override in the dashboard (a dashboard override can
@@ -59,22 +59,33 @@ work fine; the transactional flow needs the Supabase implementation
 it is production-real. Recommend: implement `SupabaseBookingStore` and select it
 by env, keeping the in-memory one for tests.
 
+## Closed in the unslop and UI pass (2026-10)
+
+- **Home page model.** The home now carries the spec's catalogue entry points
+  under the enquiry-led hero: an island map of the five departure towns (each
+  links to `/tours?from=<town>`) and an index of the six categories with live
+  counts and lowest prices (each links to `/tours?category=<slug>`). The
+  catalogue gained a matching "Leaving from" filter.
+- **Motion, partly.** One scroll-driven moment (the coastline trace and pin
+  drop on the home map), zero JavaScript, reduced-motion safe. The rest of the
+  spec's motion layer is still open, below.
+- **Designed states.** Localized 404 inside the layout, catalogue empty state,
+  mobile filter disclosure with a "Show n" return.
+
 ## Structural gaps still open (recommendations)
 
-1. **Home page model.** The spec's home is category tiles + featured + map; the
-   current home is the enquiry-led layout from the travel-agency brief. Recommend
-   rebuilding the home around the six category tiles with the map.
-2. **Motion layer** (spec prompt 2): first-visit intro (category tiles stagger,
-   once per session), View Transitions API route transitions, IntersectionObserver
-   section reveals, Suspense skeletons, 120–180ms interaction feedback — all inside
-   a 15 KB motion budget, honouring `prefers-reduced-motion`. Not yet built.
-3. **Tour detail page** `tours/[slug]` with an availability calendar. Current
-   `book/[tourSlug]` is a departures list; a full detail page (gallery, includes/
-   excludes, meeting point, calendar) is the spec's shape.
-4. **Sanity CMS** for tours/departures/content, with blur-up LQIP images and real
-   colour-graded photography (currently branded SVG thumbnails).
-5. **Bot protection** (Turnstile/hCaptcha) on public forms, and explicit cookie
-   consent before any analytics.
+1. **Motion layer** (spec prompt 2): first-visit intro, View Transitions API
+   route transitions, Suspense skeletons and 120 to 180ms interaction feedback,
+   inside a 15 KB budget, honouring `prefers-reduced-motion`. Keep the coastline
+   trace as the one orchestrated moment; add transitions, not more reveals.
+2. **Tour detail page** `tours/[slug]` with an availability calendar. The
+   booking page now has a summary panel (locator, town, duration, price, deposit
+   share, cancellation rule), which is the right column of that page already.
+3. **Sanity CMS** for tours, departures and content, with blur-up LQIP images
+   and real colour-graded location photography. When photos land, keep the
+   locator as a small inset on each card rather than dropping it.
+4. **Bot protection** (Turnstile or hCaptcha) on public forms, and explicit
+   cookie consent before any analytics.
 
 None of these block the current deploy; they are the next increments toward the
 full spec.

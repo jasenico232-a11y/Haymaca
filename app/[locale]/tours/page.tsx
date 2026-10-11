@@ -6,6 +6,7 @@ import { isLocale } from "@/i18n/config";
 import {
   categoryOrder,
   durationBands,
+  placeOrder,
   priceBands,
   sortKeys,
 } from "@/lib/tours/model";
@@ -16,6 +17,7 @@ import { ViewToggle } from "@/components/tours/ViewToggle";
 import { CategoryLegend } from "@/components/tours/CategoryLegend";
 import { TourGrid } from "@/components/tours/TourGrid";
 import { TourMapLoader } from "@/components/tours/TourMapLoader";
+import { Locator } from "@/components/island/Locator";
 
 type LocaleParams = { locale: string };
 type Search = { [key: string]: string | string[] | undefined };
@@ -52,7 +54,9 @@ export default async function ToursPage({
   const t = dict.tours;
 
   const state = parseFilters(await searchParams);
-  const views = filterTours(state).map((tour) => resolveTour(tour, dict, locale));
+  const views = filterTours(state).map((tour) =>
+    resolveTour(tour, dict, locale),
+  );
 
   const categoryOptions = categoryOrder.map((value) => ({
     value,
@@ -66,6 +70,10 @@ export default async function ToursPage({
     value,
     name: t.priceBands[value],
   }));
+  const placeOptions = placeOrder.map((value) => ({
+    value,
+    name: t.places[value],
+  }));
   const sortOptions = sortKeys.map((value) => ({ value, name: t.sort[value] }));
 
   const count = views.length;
@@ -77,18 +85,22 @@ export default async function ToursPage({
   return (
     <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
       <header className="max-w-2xl">
-        <h1 className="font-display text-2xl text-ink md:text-3xl">{t.title}</h1>
+        <h1 className="font-display text-2xl text-ink md:text-3xl">
+          {t.title}
+        </h1>
         <p className="mt-4 text-base text-muted">{t.intro}</p>
       </header>
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-12">
+      <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
         <aside className="lg:col-span-4 xl:col-span-3">
           <FilterBar
             categories={categoryOptions}
             durations={durationOptions}
             prices={priceOptions}
+            places={placeOptions}
             sorts={sortOptions}
             minDate={MIN_DATE}
+            resultCount={count}
             labels={{
               heading: t.filters.heading,
               category: t.filters.category,
@@ -97,6 +109,10 @@ export default async function ToursPage({
               date: t.filters.date,
               clear: t.filters.clear,
               sort: t.filters.sort,
+              from: t.filters.from,
+              toggle: t.filters.toggle,
+              activeCount: t.filters.activeCount,
+              results: t.filters.results,
             }}
           />
         </aside>
@@ -109,24 +125,35 @@ export default async function ToursPage({
             <ViewToggle labels={t.view} />
           </div>
 
-          <div className="mt-5">
-            <CategoryLegend dict={dict} />
-          </div>
+          {state.view === "map" ? (
+            <div className="mt-5">
+              <CategoryLegend dict={dict} />
+            </div>
+          ) : null}
 
           <div className="mt-6">
             {count === 0 ? (
-              <div className="rounded-card border border-line bg-paper p-8 text-center">
-                <h2 className="font-display text-xl text-ink">{t.empty.title}</h2>
-                <p className="mx-auto mt-2 max-w-md text-base text-muted">
-                  {t.empty.body}
-                </p>
-                <Link
-                  href={`/${locale}/tours`}
-                  data-tap="true"
-                  className="mt-6 inline-flex rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
-                >
-                  {t.empty.action}
-                </Link>
+              <div className="grid items-center gap-6 rounded-card border border-line bg-paper p-6 sm:grid-cols-[1fr_14rem] sm:p-8">
+                <div>
+                  <h2 className="font-display text-xl text-ink">
+                    {t.empty.title}
+                  </h2>
+                  <p className="mt-2 max-w-md text-base text-muted">
+                    {t.empty.body}
+                  </p>
+                  <Link
+                    href={`/${locale}/tours`}
+                    data-tap="true"
+                    className="mt-6 rounded-control bg-sun px-5 text-base font-medium text-ink transition hover:brightness-95"
+                  >
+                    {t.empty.action}
+                  </Link>
+                </div>
+                <Locator
+                  points={[]}
+                  tint="#67675E"
+                  className="order-first block h-auto w-full sm:order-none"
+                />
               </div>
             ) : state.view === "map" ? (
               <TourMapLoader

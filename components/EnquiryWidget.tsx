@@ -16,6 +16,8 @@ type Labels = {
   submit: string;
   submitHint: string;
   validation: string;
+  /** Written into the message for a question left blank. */
+  unset: string;
 };
 
 type Props = {
@@ -31,8 +33,8 @@ type Props = {
 
 /**
  * Three low-commitment questions that hand off to WhatsApp with the answers
- * pre-written — the fastest reply channel for Jamaican tourism. No backend, no
- * account, no payment: this is the top of an enquiry, not a checkout.
+ * pre-written, since WhatsApp is how most Jamaican operators reply fastest. No
+ * backend, no account, no payment: this is the top of an enquiry, not a checkout.
  */
 export function EnquiryWidget({
   labels,
@@ -62,9 +64,9 @@ export function EnquiryWidget({
       return;
     }
     const text = waTemplate
-      .replace("{where}", labelFor(destinations, where, "—"))
-      .replace("{when}", labelFor(months, when, "—"))
-      .replace("{party}", labelFor(party, who, "—"));
+      .replace("{where}", labelFor(destinations, where, labels.unset))
+      .replace("{when}", labelFor(months, when, labels.unset))
+      .replace("{party}", labelFor(party, who, labels.unset));
     const url = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank", "noopener,noreferrer");
   }

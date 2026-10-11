@@ -20,7 +20,7 @@ export function SiteHeader({
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-2">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-2">
         <Link href={base} data-tap="true" className="-ml-2 px-2">
           <span className="font-display text-lg font-semibold tracking-tight text-ink">
             {dict.brand.name}
@@ -48,11 +48,12 @@ export function SiteHeader({
             locale={locale}
             label={dict.localeSwitcher.label}
             options={dict.localeSwitcher.options}
+            compact
           />
           <Link
             href={`${base}#enquiry`}
             data-tap="true"
-            className="rounded-control bg-sun px-4 text-sm font-medium text-ink transition hover:brightness-95"
+            className="whitespace-nowrap rounded-control bg-sun px-4 text-sm font-medium text-ink transition hover:brightness-95"
           >
             {dict.nav.enquire}
           </Link>

@@ -1,6 +1,6 @@
 /**
  * All money is integer cents, computed server-side from the departure record.
- * The client never supplies a price — a tampered client amount cannot influence
+ * The client never supplies a price, so a tampered client amount cannot influence
  * what is charged.
  */
 export function computeAmounts(

@@ -29,7 +29,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
 
         <dl className="space-y-5 border-t border-line pt-8 text-base md:col-span-6 md:col-start-7 md:border-l md:border-t-0 md:pl-10 md:pt-0">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-            <dt className="text-sm uppercase tracking-wide text-muted">
+            <dt className="text-sm text-muted">
               {dict.contact.callLabel}
             </dt>
             <dd>
@@ -43,7 +43,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
             </dd>
           </div>
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-line pt-5">
-            <dt className="text-sm uppercase tracking-wide text-muted">
+            <dt className="text-sm text-muted">
               {dict.contact.emailLabel}
             </dt>
             <dd>
@@ -57,7 +57,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
             </dd>
           </div>
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-line pt-5">
-            <dt className="text-sm uppercase tracking-wide text-muted">
+            <dt className="text-sm text-muted">
               {dict.contact.addressLabel}
             </dt>
             <dd className="text-right font-medium text-ink">

@@ -1,7 +1,7 @@
 # Haymaca
 
 Enquiry-led travel site for Jamaica, built on Next.js 15. A Kingston studio that
-answers trip enquiries by hand — the site's job is to earn that first message,
+answers trip enquiries by hand. The site's job is to earn that first message,
 not to run a checkout. _Haymaca_ is the island's Taíno name, "land of wood and
 water."
 
@@ -38,15 +38,15 @@ npm run dev          # http://localhost:3000 → redirects to /en or /es
 ## Design tokens
 
 Defined once in [`tailwind.config.ts`](./tailwind.config.ts) and referenced by
-name everywhere — no raw hex, no default Tailwind palette classes in components.
+name everywhere: no raw hex, no default Tailwind palette classes in components.
 
-- **Colour** — `ink #12140F`, `paper #FBFAF6`, `forest #1F4A34`,
+- **Colour:** `ink #12140F`, `paper #FBFAF6`, `forest #1F4A34`,
   `river #2E7D8C`, `sun #E8A33D`, `muted #67675E`, `line #E0DDD3`
-- **Type scale** — 14 / 16 / 18 / 21 / 28 / 40 / 60 px (`text-xs` … `text-3xl`).
+- **Type scale:** 14 / 16 / 18 / 21 / 28 / 40 / 60 px (`text-xs` to `text-3xl`).
   The 60 and the 14 both appear on the homepage; that spread is the hierarchy.
-- **Radius** — `card` 6px, `control` 4px. The default `rounded-*` utilities are
+- **Radius:** `card` 6px, `control` 4px. The default `rounded-*` utilities are
   removed so only these two exist.
-- **Fonts** — `font-display` and `font-body`, wired to the self-hosted faces.
+- **Fonts:** `font-display` and `font-body`, wired to the self-hosted faces.
 
 ## Internationalisation
 
@@ -65,10 +65,10 @@ name everywhere — no raw hex, no default Tailwind palette classes in component
 All set in `middleware.ts`, one source of truth:
 
 - **Content-Security-Policy** with a fresh per-request nonce. `script-src` is
-  `'self' 'nonce-…' 'strict-dynamic'` — no `unsafe-inline` for scripts. The nonce
+  `'self' 'nonce-…' 'strict-dynamic'`, with no `unsafe-inline` for scripts. The nonce
   is forwarded to the render so Next.js stamps it onto every script tag; it
   rotates each request and matches the response header.
-- **Strict-Transport-Security** — two years, `includeSubDomains; preload`.
+- **Strict-Transport-Security:** two years, `includeSubDomains; preload`.
 - **X-Content-Type-Options** `nosniff`, **Referrer-Policy**
   `strict-origin-when-cross-origin`, a restrictive **Permissions-Policy**, and
   **X-Frame-Options** `DENY`.
@@ -83,17 +83,17 @@ All set in `middleware.ts`, one source of truth:
 ## Keeping it from looking machine-generated
 
 The [anti-generic audit](./tools/antislop) (`npm run audit:slop`) fails the build
-on the patterns that read as AI-generated — banned copy, gradient text,
+on the patterns that read as AI-generated: banned copy, gradient text,
 glassmorphism, raw palette classes, a centred hero, the default three-column
 feature grid, missing token or font layers. The rules live in
 [`AGENTS.md`](./AGENTS.md); current score is 100/100.
 
-## The display typeface — please read
+## The display typeface: please read
 
 The brief specifies **General Sans** (Fontshare, ITF Free Font License) for the
 display role. Its binaries could not be fetched in the build environment because
 outbound requests to Fontshare are blocked by network policy, and it is not
 mirrored on Google Fonts or npm. The display slot therefore ships **Hanken
-Grotesk** — an open (SIL OFL) grotesque with close metrics — as a documented,
+Grotesk**, an open (SIL OFL) grotesque with close metrics, as a documented,
 drop-in stand-in. Swapping in the real General Sans is a two-file change with no
 component edits; see [`lib/fonts/README.md`](./lib/fonts/README.md).

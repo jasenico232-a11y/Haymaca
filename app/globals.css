@@ -5,6 +5,9 @@
 @layer base {
   :root {
     color-scheme: light;
+    accent-color: theme("colors.forest");
+    caret-color: theme("colors.forest");
+    scrollbar-color: theme("colors.muted") theme("colors.paper");
   }
 
   html {
@@ -27,6 +30,15 @@
     text-wrap: balance;
   }
 
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
   /* Keyboard focus is always visible, in the river accent. */
   :focus-visible {
     outline: 2px solid theme("colors.river");
@@ -34,8 +46,9 @@
     border-radius: 3px;
   }
 
+  /* Sun is kept for calls to action, so selection borrows the sea instead. */
   ::selection {
-    background: theme("colors.sun");
+    background: rgb(63 147 179 / 0.28);
     color: theme("colors.ink");
   }
 
@@ -44,10 +57,10 @@
   }
 
   /*
-   * Minimum tap targets — WCAG 2.5.8 (AAA), 44×44 CSS px. Declared in the base
+   * Minimum tap targets: WCAG 2.5.8 (AAA), 44 by 44 CSS px. Declared in the base
    * layer so nothing interactive can ship undersized. Inline prose links stay
    * inline (min-height is inert on an inline box); anything that reads as a
-   * control — form fields, buttons, and links marked data-tap — gets a real
+   * control (form fields, buttons, and links marked data-tap) gets a real
    * 44px box that centres its label.
    */
   button,
@@ -74,6 +87,91 @@
   textarea {
     padding-block: 10px;
     padding-inline: 12px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: theme("colors.muted");
+  }
+}
+
+/*
+ * Island map. A town in the list and its pin on the map are the same choice:
+ * hovering or focusing the row lifts the pin and darkens its label.
+ */
+@layer components {
+  .island-pin .pin-label {
+    text-shadow:
+      0 0 3px theme("colors.paper"),
+      0 0 6px theme("colors.paper");
+  }
+
+  .island-pin:hover .pin-dot,
+  [data-island]:has([data-town="montego-bay"] a:is(:hover, :focus-visible)) [data-pin="montego-bay"] .pin-dot,
+  [data-island]:has([data-town="black-river"] a:is(:hover, :focus-visible)) [data-pin="black-river"] .pin-dot,
+  [data-island]:has([data-town="treasure-beach"] a:is(:hover, :focus-visible)) [data-pin="treasure-beach"] .pin-dot,
+  [data-island]:has([data-town="kingston"] a:is(:hover, :focus-visible)) [data-pin="kingston"] .pin-dot,
+  [data-island]:has([data-town="port-antonio"] a:is(:hover, :focus-visible)) [data-pin="port-antonio"] .pin-dot {
+    transform: scale(1.6);
+  }
+
+  .island-pin:hover .pin-label,
+  [data-island]:has([data-town="montego-bay"] a:is(:hover, :focus-visible)) [data-pin="montego-bay"] .pin-label,
+  [data-island]:has([data-town="black-river"] a:is(:hover, :focus-visible)) [data-pin="black-river"] .pin-label,
+  [data-island]:has([data-town="treasure-beach"] a:is(:hover, :focus-visible)) [data-pin="treasure-beach"] .pin-label,
+  [data-island]:has([data-town="kingston"] a:is(:hover, :focus-visible)) [data-pin="kingston"] .pin-label,
+  [data-island]:has([data-town="port-antonio"] a:is(:hover, :focus-visible)) [data-pin="port-antonio"] .pin-label {
+    color: theme("colors.forest");
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+}
+
+/*
+ * The one authored motion on the site. The island is always there; as it
+ * scrolls into view its coastline is traced west to east over the pale land,
+ * then the five towns drop onto it. Scroll-driven, so it costs no JavaScript;
+ * browsers without scroll timelines (and anyone who asks for reduced motion)
+ * get the finished drawing.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .island-frame {
+      view-timeline-name: --island;
+    }
+
+    .island-coast {
+      stroke-dasharray: 1;
+      animation: coast-trace cubic-bezier(0.33, 1, 0.68, 1) both;
+      animation-timeline: --island;
+      animation-range: entry 0% cover 40%;
+    }
+
+    .island-pin {
+      animation: pin-arrive cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: --island;
+      animation-range: cover 28% cover 42%;
+    }
+  }
+}
+
+@keyframes coast-trace {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pin-arrive {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
 

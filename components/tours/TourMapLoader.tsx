@@ -5,7 +5,7 @@ import type { TourView } from "@/lib/tours/view";
 import { MapSkeleton } from "./MapSkeleton";
 import type { MapLabels } from "./TourMap";
 
-// ssr:false keeps MapLibre out of the server render and out of first-load JS —
+// ssr:false keeps MapLibre out of the server render and out of first-load JS;
 // it is fetched only when this component mounts (i.e. when the map view opens).
 const TourMap = dynamic(() => import("./TourMap"), { ssr: false });
 

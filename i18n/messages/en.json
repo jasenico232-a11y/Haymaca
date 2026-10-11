@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Haymaca — Jamaica trips, planned on the ground",
+    "title": "Haymaca: Jamaica trips, planned on the ground",
     "description": "A Kingston travel studio arranging private and small-group trips across Jamaica: Treasure Beach, Port Antonio, the Blue Mountains, Frenchman's Cove. Enquiries answered by a person within one working day."
   },
   "html": {
@@ -11,11 +11,12 @@
     "primaryNav": "Primary navigation",
     "footerNav": "Footer navigation",
     "languageRegion": "Language",
-    "decorativeRidge": "Silhouette of the Blue Mountain ridge"
+    "islandMap": "Map of Jamaica marking the towns tours leave from: {towns}.",
+    "locator": "{place} on a map of Jamaica"
   },
   "brand": {
     "name": "Haymaca",
-    "meaning": "Taíno for \"land of wood and water\" — the island's older name."
+    "meaning": "Taíno for \"land of wood and water\", the island's older name."
   },
   "nav": {
     "destinations": "Destinations",
@@ -32,12 +33,11 @@
     }
   },
   "hero": {
-    "eyebrow": "Kingston-based travel studio · since 2016",
-    "headlineLead": "Jamaica, arranged by people who",
-    "headlineEmphasis": "live here",
-    "headlineTrail": ".",
-    "body": "We book the fishing boat, not the catamaran. Private and small-group trips across the island, planned around what you actually want to do — and answered by a person, not a form.",
-    "priceNote": "Trips from USD $2,400 per person (about J$375,000), flights excluded."
+    "headline": "Jamaica, arranged by people who live here.",
+    "body": "We book the fishing boat, not the catamaran. Private and small-group trips across the island, planned around what you want to do and answered by a person, not a form.",
+    "priceNote": "Trips from USD $2,400 per person (about J$375,000), flights excluded.",
+    "toursLead": "Only have a day or two?",
+    "toursLink": "See all {n} tours with dates and prices"
   },
   "enquiry": {
     "title": "Tell us the shape of the trip",
@@ -51,54 +51,65 @@
     "party": {
       "solo": "Just me",
       "two": "Two of us",
-      "family": "Family (3–5)",
+      "family": "Family (3 to 5)",
       "group": "Group (6 or more)"
     },
     "months": {
       "flex": "Not fixed yet",
-      "novFeb": "November–February (dry, cooler)",
-      "marMay": "March–May",
-      "junAug": "June–August",
-      "sepOct": "September–October"
+      "novFeb": "November to February (dry, cooler)",
+      "marMay": "March to May",
+      "junAug": "June to August",
+      "sepOct": "September to October"
     },
     "submit": "Continue on WhatsApp",
     "submitHint": "Opens WhatsApp with your answers filled in. We reply within one working day.",
-    "waMessage": "Hi Haymaca — I'd like to plan a Jamaica trip. Where: {where}. When: {when}. Travelling: {party}.",
-    "validation": "Choose a starting point so we know where to begin."
+    "waMessage": "Hi Haymaca, I'd like to plan a Jamaica trip. Where: {where}. When: {when}. Travelling: {party}.",
+    "validation": "Choose a starting point so we know where to begin.",
+    "unset": "not sure yet"
+  },
+  "island": {
+    "title": "Where the tours leave from",
+    "intro": "Every tour starts in one of five towns, with a guide from that parish. Pick the one nearest to where you are staying.",
+    "credit": "Coastline from Natural Earth. Pins mark departure towns.",
+    "from": "from USD {price}"
+  },
+  "kinds": {
+    "title": "Pick the kind of day",
+    "intro": "From a pre-dawn climb to 2,256 metres to lunch at a bar on stilts a mile out to sea. Each kind keeps its colour and mark on the cards and the map."
   },
   "destinations": {
     "title": "Where we send people",
-    "intro": "Four places we know street by street. Every trip is built from stays we have slept in and boats we have been on — not a supplier list.",
+    "intro": "Four places we know street by street. Every trip is built from stays we have slept in and boats we have been on, not from a supplier list.",
     "regionLabel": "Region",
     "bestLabel": "Best months",
     "fromLabel": "From",
-    "featured": "Signature",
+    "featured": "Signature trip",
     "items": {
       "treasure-beach": {
         "name": "Treasure Beach",
         "region": "St. Elizabeth, south coast",
-        "best": "Nov–Apr",
+        "best": "Nov to Apr",
         "from": "USD $2,400",
         "blurb": "Fishing villages on the dry side of the island. Community-run guesthouses, a boat out to the Pelican Bar, and not a resort strip in sight."
       },
       "port-antonio": {
         "name": "Port Antonio",
         "region": "Portland, north-east",
-        "best": "Dec–Mar",
+        "best": "Dec to Mar",
         "from": "USD $3,100",
         "blurb": "The green corner. Bamboo rafting down the Rio Grande, the Blue Lagoon before the boats arrive, and waterfalls you reach on foot."
       },
       "blue-mountains": {
         "name": "Blue Mountains",
         "region": "St. Andrew, above Kingston",
-        "best": "Dec–Apr",
+        "best": "Dec to Apr",
         "from": "USD $1,900",
         "blurb": "Coffee farms at 1,200 metres, cold nights under blankets, and the pre-dawn walk to the 2,256-metre Peak for sunrise over both coasts."
       },
       "frenchmans-cove": {
         "name": "Frenchman's Cove",
         "region": "Portland, east of Port Antonio",
-        "best": "Nov–Mar",
+        "best": "Nov to Mar",
         "from": "USD $2,700",
         "blurb": "A white-sand cove where a cold freshwater river runs straight into the sea. You can swim in both within one stroke."
       }
@@ -123,9 +134,9 @@
   },
   "contact": {
     "title": "Talk to a person",
-    "body": "Weekdays 8am–6pm Jamaica time. WhatsApp is usually the fastest way to reach us.",
+    "body": "Weekdays 8am to 6pm Jamaica time. WhatsApp is usually the fastest way to reach us.",
     "whatsapp": "Message on WhatsApp",
-    "whatsappMessage": "Hi Haymaca — I have a question about planning a trip.",
+    "whatsappMessage": "Hi Haymaca, I have a question about planning a trip.",
     "callLabel": "Call",
     "phone": "+1 876 555 0148",
     "emailLabel": "Email",
@@ -135,7 +146,7 @@
   },
   "tours": {
     "meta": {
-      "title": "Tours and day trips — Haymaca",
+      "title": "Tours and day trips | Haymaca",
       "description": "Guided day trips and multi-day routes across Jamaica, filterable by category, duration, price and date, on a grid or a map."
     },
     "title": "Tours and day trips",
@@ -149,7 +160,11 @@
       "price": "Price from (USD)",
       "date": "Available on or after",
       "clear": "Clear filters",
-      "sort": "Sort by"
+      "sort": "Sort by",
+      "from": "Leaving from",
+      "toggle": "Filter and sort",
+      "activeCount": "{n} on",
+      "results": "Show {n}"
     },
     "categories": {
       "waterfalls": "Waterfalls & Rivers",
@@ -166,8 +181,8 @@
     },
     "priceBands": {
       "under-100": "Under $100",
-      "100-250": "$100–250",
-      "250-500": "$250–500",
+      "100-250": "$100 to $250",
+      "250-500": "$250 to $500",
       "over-500": "$500 and up"
     },
     "sort": {
@@ -196,7 +211,7 @@
     },
     "empty": {
       "title": "No tours match those filters",
-      "body": "Widen the dates or drop a filter — the calendar fills months ahead, so there is usually something close.",
+      "body": "Widen the dates or drop a filter. The calendar fills months ahead, so there is usually something close.",
       "action": "Clear filters"
     },
     "map": {
@@ -268,7 +283,7 @@
     }
   },
   "book": {
-    "metaTitle": "Book — Haymaca",
+    "metaTitle": "Book | Haymaca",
     "title": "Book",
     "chooseDeparture": "Choose a departure",
     "seatsLeft": "{n} seats left",
@@ -296,7 +311,7 @@
     "checkout": {
       "title": "Deposit payment",
       "provider": "the payment provider",
-      "hostedNote": "Card details are entered on {provider}'s secure page — they never reach Haymaca.",
+      "hostedNote": "Card details are entered on {provider}'s secure page and never reach Haymaca.",
       "depositDue": "Deposit due",
       "of": "of",
       "pay": "Pay deposit (demo)",
@@ -313,7 +328,7 @@
       "failedBody": "No deposit was taken. You can start the booking again.",
       "expiredTitle": "Your held seats were released",
       "expiredBody": "The 15-minute hold ran out before the deposit cleared, so we did not rebook you automatically. The next departure with room:",
-      "expiredNoNext": "There is no later departure with room right now — send an enquiry and we will find you a place.",
+      "expiredNoNext": "There is no later departure with room right now. Send an enquiry and we will find you a place.",
       "cancelledTitle": "Booking cancelled",
       "cancelledCustomer": "This booking was cancelled at your request.",
       "cancelledWeather": "This departure was cancelled for weather. Your deposit is being refunded.",
@@ -328,17 +343,26 @@
       "cancelDone": "This booking has been cancelled.",
       "browse": "Browse all tours",
       "eticketTitle": "Your e-ticket",
-      "eticketBody": "Show this QR at check-in — the operator scans it to confirm your place.",
+      "eticketBody": "Show this QR at check-in. The operator scans it to confirm your place.",
       "qrAlt": "E-ticket QR code",
       "downloadPdf": "Download PDF ticket",
       "checkedIn": "Checked in",
       "rateLimited": "Too many requests. Wait a moment and reload."
     },
     "requirements": "Anything we should know? (diet, mobility, ages)",
-    "requirementsHint": "Optional — this goes straight to your guide."
+    "requirementsHint": "Optional. This goes straight to your guide.",
+    "backToTours": "All tours",
+    "departureOption": "{date}: {seats}, {price} each",
+    "summary": {
+      "leavesFrom": "Leaves from",
+      "duration": "Duration",
+      "perPerson": "Per person",
+      "deposit": "Deposit to hold seats",
+      "depositValue": "{pct}% of the total"
+    }
   },
   "operator": {
-    "metaTitle": "Operator — Haymaca",
+    "metaTitle": "Operator | Haymaca",
     "loginTitle": "Operator sign-in",
     "loginBody": "Enter the operator passcode to see today's manifests.",
     "passcode": "Passcode",
@@ -354,7 +378,7 @@
     "status": "Status",
     "checkedIn": "Checked in",
     "expected": "Expected",
-    "none": "—",
+    "none": "None",
     "seats": "{booked}/{total} seats booked",
     "scan": "Open scanner",
     "cancelWeather": "Cancel for weather",
@@ -362,11 +386,11 @@
     "cancelledWeather": "Cancelled for weather",
     "signOut": "Sign out",
     "scanTitle": "Ticket scanner",
-    "scanBody": "Point the camera at an e-ticket, or paste a token. Works offline — scans queue and sync when you are back online.",
+    "scanBody": "Point the camera at an e-ticket, or paste a token. Works offline: scans queue and sync when you are back online.",
     "scanInput": "Ticket token",
     "scanButton": "Check in",
     "online": "Online",
-    "offline": "Offline — scans are queued",
+    "offline": "Offline: scans are queued",
     "queuedCount": "{n} waiting to sync",
     "syncNow": "Sync now",
     "resultCheckedIn": "Checked in: {name}, party of {party}",
@@ -375,10 +399,10 @@
     "resultNotConfirmed": "Ticket is not for a confirmed booking",
     "resultWrongDeparture": "Ticket is for a different departure",
     "back": "Back to departures",
-    "cameraUnavailable": "Camera not available — paste the token instead."
+    "cameraUnavailable": "Camera not available. Paste the token instead."
   },
   "footer": {
-    "tagline": "A travel studio for Jamaica, on the ground in Kingston.",
+    "tagline": "A travel studio for Jamaica, working from Kingston since 2016.",
     "rights": "© 2026 Haymaca Travel Ltd. Licensed by the Jamaica Tourist Board.",
     "backToTop": "Back to top"
   },

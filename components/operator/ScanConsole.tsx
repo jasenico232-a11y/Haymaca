@@ -35,7 +35,7 @@ export function ScanConsole({ labels }: { labels: Labels }) {
     try {
       window.localStorage.setItem(QUEUE_KEY, JSON.stringify(items));
     } catch {
-      // storage unavailable — the in-memory queue still holds this session
+      // storage unavailable: the in-memory queue still holds this session
     }
   }, []);
 
@@ -72,9 +72,9 @@ export function ScanConsole({ labels }: { labels: Labels }) {
               ? labels.resultWrongDeparture
               : labels.resultInvalid;
         pushLog(text, "warn");
-        return true; // forged / invalid — do not retry
+        return true; // forged or invalid, so do not retry
       }
-      return false; // transient (401/429/5xx) — leave queued
+      return false; // transient (401, 429, 5xx), so leave it queued
     },
     [labels, pushLog],
   );
@@ -97,7 +97,7 @@ export function ScanConsole({ labels }: { labels: Labels }) {
             remaining = remaining.filter((q) => q !== item);
             persist(remaining);
           } else {
-            break; // transient failure — stop and keep the rest queued
+            break; // transient failure: stop and keep the rest queued
           }
         } catch {
           break; // network dropped again
@@ -156,7 +156,7 @@ export function ScanConsole({ labels }: { labels: Labels }) {
       const resolved = reportResult(res.status, data);
       if (!resolved) persist([...queue, { token: value, ts: Date.now() }]);
     } catch {
-      // Offline mid-request — queue it for the next sync.
+      // Offline mid-request, so queue it for the next sync.
       persist([...queue, { token: value, ts: Date.now() }]);
     }
   }

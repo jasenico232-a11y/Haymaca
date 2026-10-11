@@ -176,7 +176,7 @@ export class InMemoryBookingStore {
     return this.bookings.get(id) ?? null;
   }
 
-  /** Mark a confirmed guest checked in. Idempotent — a second scan is a no-op. */
+  /** Mark a confirmed guest checked in. Idempotent: a second scan is a no-op. */
   markCheckedIn(
     bookingId: string,
   ): Promise<{ ok: boolean; already: boolean; booking: Booking | null }> {
@@ -204,7 +204,7 @@ export class InMemoryBookingStore {
     );
   }
 
-  /** Every real booking on a departure (confirmed or cancelled) — the manifest
+  /** Every real booking on a departure (confirmed or cancelled): the manifest
    *  keeps showing cancelled guests so history is never lost. */
   bookingsForDeparture(departureId: string): Booking[] {
     return [...this.bookings.values()]
@@ -218,7 +218,7 @@ export class InMemoryBookingStore {
 
   /**
    * Apply a verified payment event. Idempotent twice over: a replayed event id is
-   * a no-op, and a booking already in a final state is never re-confirmed — so a
+   * a no-op, and a booking already in a final state is never re-confirmed, so a
    * replay can never create or double-confirm a booking.
    */
   applyPaymentEvent(
@@ -301,7 +301,7 @@ export class InMemoryBookingStore {
 
   /**
    * Weather cancellation of a whole departure. A status change that cancels every
-   * booking on it (for refund + notification), and never deletes a record — the
+   * booking on it (for refund + notification), and never deletes a record: the
    * booking history is preserved.
    */
   cancelDeparture(departureId: string): Promise<{

@@ -25,7 +25,7 @@ export default async function CheckoutPage({
 
   // These run on the provider's side of the fence: they emit a SIGNED webhook
   // and pass it through the same verified handler the real provider hits. The
-  // button never sets "paid" itself — the webhook is the source of truth.
+  // button never sets "paid" itself; the webhook is the source of truth.
   async function payDeposit() {
     "use server";
     const current = getBooking(reference);

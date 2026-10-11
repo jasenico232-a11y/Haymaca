@@ -5,7 +5,7 @@ import { getMockProvider } from "@/lib/payments";
 /**
  * Test-only seam, gated behind ENABLE_TEST_HOOKS. Stands in for the provider's
  * backend: given a booking reference it returns the exact signed webhook payload
- * the provider would POST. The test then delivers it to /api/payments/webhook —
+ * the provider would POST. The test then delivers it to /api/payments/webhook;
  * posting it twice is a genuine replay.
  */
 export async function POST(request: Request) {

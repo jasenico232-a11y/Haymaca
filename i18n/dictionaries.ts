@@ -5,7 +5,7 @@ import es from "./messages/es.json";
 /**
  * The English catalogue is the source of truth for the message shape. Typing the
  * registry as Record<Locale, Dictionary> makes TypeScript reject any catalogue
- * that drifts out of parity — a missing key in es fails the build.
+ * that drifts out of parity: a missing key in es fails the build.
  */
 export type Dictionary = typeof en;
 

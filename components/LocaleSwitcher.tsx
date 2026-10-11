@@ -9,13 +9,20 @@ type Props = {
   locale: Locale;
   label: string;
   options: Record<Locale, string>;
+  /** Below 640px show the two-letter code so the header fits on one line. */
+  compact?: boolean;
 };
 
 /**
  * Explicit language override. Writes the NEXT_LOCALE cookie the middleware reads,
  * then swaps the locale segment of the current path.
  */
-export function LocaleSwitcher({ locale, label, options }: Props) {
+export function LocaleSwitcher({
+  locale,
+  label,
+  options,
+  compact = false,
+}: Props) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -48,10 +55,19 @@ export function LocaleSwitcher({ locale, label, options }: Props) {
             className={
               active
                 ? "px-3 text-sm font-medium text-paper bg-forest"
-                : "px-3 text-sm text-muted transition-colors hover:text-ink"
+                : "px-3 text-sm text-muted transition-colors hover:bg-forest/5 hover:text-ink"
             }
           >
-            {options[option]}
+            {compact ? (
+              <>
+                <span className="uppercase sm:hidden">{option}</span>
+                <span className="sr-only sm:not-sr-only">
+                  {options[option]}
+                </span>
+              </>
+            ) : (
+              options[option]
+            )}
           </button>
         );
       })}

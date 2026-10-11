@@ -8,7 +8,7 @@ No font is requested from a third-party CDN at runtime.
 | Body    | `Inter-latin-var*.woff2`             | Inter          | SIL OFL 1.1        |
 | Display | `HankenGrotesk-latin-var*.woff2`     | Hanken Grotesk | SIL OFL 1.1        |
 
-Each file is a variable font (weight axis `100 900`), latin subset — it covers
+Each file is a variable font (weight axis `100 900`), latin subset; it covers
 English and Spanish, including `á é í ó ú ñ ¿ ¡`.
 
 ## Display face: General Sans vs. the shipped stand-in

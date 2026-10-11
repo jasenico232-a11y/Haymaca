@@ -27,6 +27,7 @@ export type TourView = {
   bookHref: string;
   bookLabel: string;
   coords: [number, number];
+  locatorLabel: string;
 };
 
 // Fixed "today" for the seed dataset so next-available is deterministic.
@@ -99,5 +100,6 @@ export function resolveTour(
     bookHref: `/${locale}/book/${tour.slug}`,
     bookLabel: dict.tours.card.book,
     coords: tour.coords,
+    locatorLabel: dict.a11y.locator.replace("{place}", copy.title),
   };
 }

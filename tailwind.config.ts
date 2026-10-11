@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * Haymaca token layer. Every value here is a decision, not a default.
- * Components reference these names only — no raw hex, no default Tailwind
+ * Components reference these names only: no raw hex, no default Tailwind
  * palette classes (bg-blue-500 and friends are banned by tools/antislop).
  */
 const config: Config = {
@@ -23,9 +23,9 @@ const config: Config = {
       colors: {
         ink: "#12140F", // near-black, primary text and inverted surfaces
         paper: "#FBFAF6", // warm off-white page background, never pure #FFF
-        forest: "#1F4A34", // deep green, primary accent — the hills, not a logo blue
+        forest: "#1F4A34", // deep green, primary accent: the hills, not a logo blue
         river: "#2E7D8C", // muted teal, secondary accent and links
-        sun: "#E8A33D", // calls to action only — never decorative
+        sun: "#E8A33D", // calls to action only, never decorative
         muted: "#67675E", // secondary text
         line: "#E0DDD3", // hairlines and dividers
         // Category accents (six categories). river = Waterfalls & Rivers,

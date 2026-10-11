@@ -4,7 +4,7 @@
  * The provider is deliberately undecided: Stripe does not serve Jamaica-based
  * businesses, so the live provider will be WiPay, First Atlantic Commerce or
  * PayPal. Everything the booking flow needs is expressed through this interface,
- * so a real provider is a single new file that implements it — nothing else in
+ * so a real provider is a single new file that implements it, and nothing else in
  * the app imports a provider directly (see lib/payments/index.ts).
  *
  * Two rules the interface encodes:
@@ -27,7 +27,7 @@ export type BookingDraft = {
   tourSlug: string;
   departureId: string;
   partySize: number;
-  /** The amount to charge now — the deposit only, computed server-side. */
+  /** The amount to charge now: the deposit only, computed server-side. */
   deposit: Money;
   /** Full trip price, for records and display. Never charged here. */
   total: Money;
@@ -48,7 +48,7 @@ export type HostedFieldsConfig = {
 };
 
 export type CreateCheckoutResult = {
-  /** Provider payment reference — the idempotency key for the whole payment. */
+  /** Provider payment reference, the idempotency key for the whole payment. */
   ref: string;
   redirectUrl?: string;
   hostedFields?: HostedFieldsConfig;
@@ -61,7 +61,7 @@ export type VerifiedEventType =
 
 export type VerifiedEvent = {
   ref: string;
-  /** Provider's unique event id — the webhook idempotency key. */
+  /** Provider's unique event id, the webhook idempotency key. */
   eventId: string;
   type: VerifiedEventType;
   status: PaymentStatus;

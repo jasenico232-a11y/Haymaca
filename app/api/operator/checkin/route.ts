@@ -5,7 +5,7 @@ import { clientKey, rateLimit } from "@/lib/rate-limit";
 
 /**
  * Verifies a scanned e-ticket and checks the guest in. Auth-gated; the signed
- * token is verified server-side, so a forged QR is rejected here. Idempotent —
+ * token is verified server-side, so a forged QR is rejected here. Idempotent:
  * a repeated scan reports "already checked in".
  */
 export async function POST(request: Request) {

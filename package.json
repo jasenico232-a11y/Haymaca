@@ -2,7 +2,7 @@
   "name": "haymaca",
   "version": "0.1.0",
   "private": true,
-  "description": "Haymaca — enquiry-led travel site for Jamaica. Next.js 15 App Router, en/es, nonce-based CSP.",
+  "description": "Haymaca: enquiry-led travel site for Jamaica. Next.js 15 App Router, en/es, nonce-based CSP.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

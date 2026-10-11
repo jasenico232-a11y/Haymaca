@@ -37,7 +37,7 @@ export default async function BookingStatusPage({
   const s = dict.book.status;
 
   // This route is reachable only by an unguessable reference, but it is
-  // enumerable in principle — rate-limit per client so it cannot be swept.
+  // enumerable in principle, so rate-limit per client to stop a sweep.
   const forwarded = (await headers()).get("x-forwarded-for");
   const ip = forwarded?.split(",")[0]?.trim() || "unknown";
   if (!rateLimit(`booking-view:${ip}`, 40, 60_000).ok) {
@@ -78,7 +78,7 @@ export default async function BookingStatusPage({
 
       <dl className="mt-8 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2">
         <Row label={s.reference} value={booking.reference} mono />
-        <Row label={s.departs} value={`${title} · ${departsLabel}`} />
+        <Row label={s.departs} value={`${departsLabel} (${title})`} />
         <Row label={s.party} value={String(booking.partySize)} />
         <Row label={s.depositPaid} value={formatUsd(booking.depositCents)} />
         <Row label={s.total} value={formatUsd(booking.totalCents)} />

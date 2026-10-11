@@ -20,6 +20,11 @@ type Props = { tours: TourView[]; labels: MapLabels };
 // tour gets its own pin. That is the "cluster by region" behaviour.
 const CLUSTER_ZOOM = 9;
 
+// Two region markers closer than this on screen are merged into one, so no
+// 44px target ever sits on top of another (on a phone the south coast and
+// Cockpit Country regions are only about 35px apart).
+const MIN_MARKER_GAP = 46;
+
 const PAPER = "#FBFAF6";
 
 // One-path white glyphs, drawn inside the coloured pin so colour is paired with
@@ -63,6 +68,20 @@ function groupByRegion(list: TourView[]): Map<RegionSlug, TourView[]> {
     else groups.set(tour.region, [tour]);
   }
   return groups;
+}
+
+function mergeCrowded(map: maplibregl.Map, groups: TourView[][]): TourView[][] {
+  const merged: TourView[][] = [];
+  for (const group of groups) {
+    const point = map.project(centroid(group));
+    const near = merged.find((other) => {
+      const otherPoint = map.project(centroid(other));
+      return Math.hypot(point.x - otherPoint.x, point.y - otherPoint.y) < MIN_MARKER_GAP;
+    });
+    if (near) near.push(...group);
+    else merged.push([...group]);
+  }
+  return merged;
 }
 
 function pinElement(tour: TourView, label: string, onClick: () => void): HTMLButtonElement {
@@ -122,7 +141,7 @@ export default function TourMap({ tours, labels }: Props) {
 
     const list = toursRef.current;
     if (map.getZoom() < CLUSTER_ZOOM) {
-      for (const [, group] of groupByRegion(list)) {
+      for (const group of mergeCrowded(map, [...groupByRegion(list).values()])) {
         const label = labels.clusterTemplate.replace("{n}", String(group.length));
         const center = centroid(group);
         const element = clusterElement(group.length, label, () =>
@@ -134,7 +153,7 @@ export default function TourMap({ tours, labels }: Props) {
       }
     } else {
       for (const tour of list) {
-        const element = pinElement(tour, `${tour.categoryName} — ${tour.title}`, () =>
+        const element = pinElement(tour, `${tour.title} (${tour.categoryName})`, () =>
           selectRef.current(tour),
         );
         markersRef.current.push(

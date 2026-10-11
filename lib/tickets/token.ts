@@ -1,8 +1,8 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 
 /**
- * E-ticket tokens. The QR encodes a SIGNED token — an HMAC over the booking id
- * and departure id — never the raw booking id. At scan time the operator route
+ * E-ticket tokens. The QR encodes a SIGNED token (an HMAC over the booking id
+ * and departure id), never the raw booking id. At scan time the operator route
  * recomputes the signature; a forged or edited token fails verification, so a
  * QR cannot be fabricated without the server secret.
  */

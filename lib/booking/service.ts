@@ -148,7 +148,7 @@ export async function handleWebhook(
 
 /**
  * Server-side reconciliation for a redirect return, so we never trust a client
- * claim of payment. Safe to call repeatedly — it flows through the same
+ * claim of payment. Safe to call repeatedly: it flows through the same
  * idempotent store path.
  */
 export async function reconcileBooking(reference: string): Promise<Booking | null> {
@@ -203,8 +203,8 @@ export type CheckInResult =
     };
 
 /**
- * Operator scan. Verifies the signed ticket server-side — a forged token fails
- * here — then marks the guest checked in. Idempotent: a re-scan reports
+ * Operator scan. Verifies the signed ticket server-side (a forged token fails
+ * here), then marks the guest checked in. Idempotent: a re-scan reports
  * already-checked-in rather than erroring.
  */
 export async function checkInByToken(token: string): Promise<CheckInResult> {
@@ -229,7 +229,7 @@ export async function checkInByToken(token: string): Promise<CheckInResult> {
   };
 }
 
-/** When a hold expired mid-checkout, offer the next departure — never rebook. */
+/** When a hold expired mid-checkout, offer the next departure, never rebook. */
 export function nextDepartureFor(booking: Booking): Departure | null {
   const store = getBookingStore();
   const departure = store.getDeparture(booking.departureId);
