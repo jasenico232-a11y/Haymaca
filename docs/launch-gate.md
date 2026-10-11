@@ -1,8 +1,10 @@
 # Launch gate: hardening audit
 
 Audited on the production build of this branch. Item 1 is a hard stop; it
-passed. Thirteen items pass with evidence; item 9 (Lighthouse) carries a written
-remediation because it must run against the deployed URL. Nothing was changed
+passed. Twelve items pass with evidence; item 9 (Lighthouse) carries a written
+remediation because it must run against the deployed URL, and item 13 carries
+one because new advisories against Tailwind 3's build tooling appeared after the
+first audit (production dependencies are clean). Nothing was changed
 silently; the fixes applied during the audit are listed in the second table.
 
 ## The fourteen
@@ -21,7 +23,7 @@ silently; the fixes applied during the audit are listed in the second table.
 | 10 | First-load JS ≤ 130 KB gzipped | **PASS** | Largest route **122 KB** (`/[locale]/book/[tourSlug]`); `/tours` 110 KB, home 104 KB (Next's gzipped First Load JS). MapLibre (~530 KB) is a lazy chunk, excluded. |
 | 11 | Both locales render fully; no hardcoded strings | **PASS** | `/en/*` and `/es/*` render; every visible string flows from `i18n/messages/*.json` (the en catalogue types the es one, so drift fails the build). No English leaks into `/es`. |
 | 12 | axe-core zero critical/serious; category coding never colour-alone | **PASS** | axe-core (wcag2a/aa, wcag21a/aa) on `/en`, `/en/tours`, `/en/book/[tour]`, `/es/tours` → **0 critical, 0 serious** (0 total). Category colour always pairs with an icon and the name: on chips, the always-present legend, the filter list, and map pins. |
-| 13 | `npm audit` clean at moderate and above | **PASS** | `npm audit` → **0 vulnerabilities** (after the overrides below). |
+| 13 | `npm audit` clean at moderate and above | **REMEDIATION** (re-audited 2026-10-11) | Production dependencies: `npm audit --omit=dev` → **0 vulnerabilities** after the October patch (table below). Dev tooling: 7 high and 2 moderate advisories remain in Tailwind CSS 3's build chain (`braces`, `micromatch`, `chokidar`, `postcss-selector-parser`, `postcss-nested`). They run only at build time over this repo's own glob patterns, never on user input, and nothing from them ships to the browser. The only fix is a Tailwind 4 migration (breaking: config moves to CSS). **Schedule the Tailwind 4 migration; not a launch blocker.** |
 | 14 | No placeholder copy or TODOs anywhere | **PASS** | Anti-generic audit (100/100) blocks placeholders/TODOs in `app`, `components`, `lib`; a repo grep finds none (the only "todo" hit is the Spanish word *todos*). |
 
 ## Fixes applied during the audit (nothing silent)
@@ -31,12 +33,17 @@ silently; the fixes applied during the audit are listed in the second table.
 | High | `package.json` | `sharp@0.34.5` (< 0.35.0) inherited libvips CVEs, a transitive optional dep of Next 15's image optimizer (unused here, no `next/image`). The `npm audit fix --force` path would install Next 16, breaking the Next 15 requirement. | Pinned `sharp` to `0.35.3` via `overrides`, keeping Next 15. |
 | High | `package.json` | `postcss` ≤ 8.5.22: build-time source-map path-traversal / XSS advisories. | Bumped the direct dep and added a `postcss` `override` to `8.5.26`. |
 | Low | `package.json` | `@eslint/plugin-kit` < 0.3.4 (via eslint), dev tooling only, below the moderate gate. | Overrode `@eslint/plugin-kit` to `0.7.2` to reach a fully clean audit. |
+| Critical | `package.json` | October 2026 re-audit: `next` 15.5.23 is covered by new advisories (RCE on Windows hosts, RCE in image optimisation with AVIF, SSG/ISR cache poisoning). | Bumped `next` and `eslint-config-next` to `15.5.27`, the patched Next 15 release. |
+| High | `package.json` | `sharp` ≤ 0.35.5-rc.1 (libheif, librsvg CVEs). | Override raised from `0.35.3` to `0.35.5`. |
+| High | `package-lock.json` | `source-map-js` ≤ 1.2.1 and `brace-expansion` (event-loop and stack DoS). | `npm audit fix` (non-breaking lockfile update). |
 | Medium | `app/[locale]/book/[tourSlug]/page.tsx` | The availability surface (departures + live seat counts) had no rate limit, unlike the hold/book/booking routes. | Added a per-IP rate limit (60/min) to the availability page. |
 
 ## Verdict
 
-Item 1 (the hard stop) passes: no overselling under concurrency. Thirteen of
-fourteen pass with evidence; item 9 has a written remediation and must be run on
+Item 1 (the hard stop) passes: no overselling under concurrency. Twelve of
+fourteen pass with evidence. Item 9 has a written remediation and must be run on
 the deployed URL, where its accessibility half is already corroborated by a clean
-axe-core pass. **Cleared to launch once the deployed-URL Lighthouse run confirms
+axe-core pass (re-run 2026-10-11 with WCAG 2.2 AA rules: 0 violations on 7 routes
+at 375 and 1440 px). Item 13 has a written remediation: production dependencies
+are clean, and the remaining dev-only advisories need the Tailwind 4 migration. **Cleared to launch once the deployed-URL Lighthouse run confirms
 Perf ≥ 90.**
