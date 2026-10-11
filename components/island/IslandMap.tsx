@@ -23,15 +23,16 @@ export type Town = {
   categories: Array<{ slug: CategorySlug; name: string }>;
 };
 
-// Where each label sits relative to its pin, always out over the sea so the
-// coastline stays readable. Black River and Treasure Beach are 17 km apart, so
-// one label goes west and the other south.
+// Where each label sits relative to its pin, chosen so no label crosses the
+// coastline: north-coast towns label out over the sea, the south-west pair
+// split (Black River inland, Treasure Beach out to sea) because they are only
+// 17 km apart, and Kingston labels inland clear of the Palisadoes.
 const LABEL_SIDE: Record<PlaceSlug, string> = {
   "montego-bay": "bottom-[30px] left-1/2 -translate-x-1/2",
-  "black-river": "right-[30px] top-1/2 -translate-y-1/2",
-  "treasure-beach": "top-[30px] left-1/2 -translate-x-1/2",
-  kingston: "top-[30px] left-1/2 -translate-x-1/2",
-  "port-antonio": "bottom-[30px] left-1/2 -translate-x-1/2",
+  "black-river": "left-[30px] top-1/2 -translate-y-1/2",
+  "treasure-beach": "top-[34px] left-1/2 -translate-x-1/2",
+  kingston: "left-[30px] top-1/2 -translate-y-1/2",
+  "port-antonio": "bottom-[34px] left-1/2 -translate-x-1/2",
 };
 
 // The 1:10m coastline smooths over Montego Bay's bay, which leaves the true
